@@ -9,7 +9,7 @@ export type Field = {
     isFragment?: boolean;
 };
 export type Fields = Field[];
-class GraphQLResolveInfoParser {
+export class GraphQLResolveInfoParser {
     protected fields: Fields;
     constructor(
         protected operation: OperationDefinitionNode,

@@ -91,6 +91,7 @@ class GraphQLResolveInfoParser {
         throw new Error("Unknown kind");
     }
 }
+exports.GraphQLResolveInfoParser = GraphQLResolveInfoParser;
 ;
 function fromQuery(q) {
     const document = graphql_1.parse(q);
