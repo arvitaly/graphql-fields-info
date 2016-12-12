@@ -1,6 +1,6 @@
 "use strict";
 const graphql_1 = require("graphql");
-class GraphQLResolveInfoParser {
+class GraphQLFieldsInfo {
     constructor(operation, fragments) {
         this.operation = operation;
         this.fragments = fragments;
@@ -91,7 +91,7 @@ class GraphQLResolveInfoParser {
         throw new Error("Unknown kind");
     }
 }
-exports.GraphQLResolveInfoParser = GraphQLResolveInfoParser;
+exports.GraphQLFieldsInfo = GraphQLFieldsInfo;
 ;
 function fromQuery(q) {
     const document = graphql_1.parse(q);
@@ -103,12 +103,12 @@ function fromQuery(q) {
     });
     const operation = document
         .definitions.find((node) => node.kind === "OperationDefinition");
-    return new GraphQLResolveInfoParser(operation, fragments);
+    return new GraphQLFieldsInfo(operation, fragments);
 }
 exports.fromQuery = fromQuery;
 function fromResolveInfo(info) {
-    return new GraphQLResolveInfoParser(info.operation, info.fragments);
+    return new GraphQLFieldsInfo(info.operation, info.fragments);
 }
 exports.fromResolveInfo = fromResolveInfo;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = GraphQLResolveInfoParser;
+exports.default = fromQuery;

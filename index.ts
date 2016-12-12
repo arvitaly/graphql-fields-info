@@ -9,7 +9,7 @@ export type Field = {
     isFragment?: boolean;
 };
 export type Fields = Field[];
-export class GraphQLResolveInfoParser {
+export class GraphQLFieldsInfo {
     protected fields: Fields;
     constructor(
         protected operation: OperationDefinitionNode,
@@ -111,9 +111,9 @@ export function fromQuery(q: string) {
     });
     const operation = document
         .definitions.find((node) => node.kind === "OperationDefinition") as OperationDefinitionNode;
-    return new GraphQLResolveInfoParser(operation, fragments);
+    return new GraphQLFieldsInfo(operation, fragments);
 }
 export function fromResolveInfo(info: GraphQLResolveInfo) {
-    return new GraphQLResolveInfoParser(info.operation, info.fragments);
+    return new GraphQLFieldsInfo(info.operation, info.fragments);
 }
-export default GraphQLResolveInfoParser;
+export default fromQuery;
