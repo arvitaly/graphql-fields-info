@@ -1,0 +1,35 @@
+{
+  "name": "graphql-fields-info",
+  "version": "0.0.0",
+  "description": "Util for get fields from graphql-query or GraphQLResolveInfo",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && tslint --project=tsconfig.json && jest --verbose --coverage",
+    "watch:test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvitaly/graphql-fields-info.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvitaly/graphql-fields-info/issues"
+  },
+  "homepage": "https://github.com/arvitaly/graphql-fields-info#readme",
+  "jest": {
+    "automock": false
+  },
+  "devDependencies": {
+    "@types/jest": "^16.0.1",
+    "coveralls": "^2.11.15",
+    "jest": "^17.0.3",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/graphql": "^0.8.2",
+    "graphql": "^0.8.2"
+  }
+}

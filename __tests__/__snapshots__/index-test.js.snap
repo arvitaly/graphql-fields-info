@@ -1,0 +1,91 @@
+exports[`info get node fields 1`] = `
+Array [
+  Object {
+    "fields": Array [
+      Object {
+        "fields": Array [],
+        "name": "field1",
+      },
+    ],
+    "name": "model1",
+  },
+]
+`;
+
+exports[`info get query connection fields simple 1`] = `
+Array [
+  Object {
+    "fields": Array [],
+    "name": "name",
+  },
+]
+`;
+
+exports[`info get query connection fields with fragments 1`] = `
+Array [
+  Object {
+    "fields": Array [
+      Object {
+        "fields": Array [],
+        "name": "field1",
+      },
+      Object {
+        "fields": Array [
+          Object {
+            "fields": Array [],
+            "name": "field2",
+          },
+        ],
+        "name": "model2",
+      },
+    ],
+    "name": "model1",
+  },
+]
+`;
+
+exports[`info get query one fields 1`] = `
+Array [
+  Object {
+    "fields": Array [],
+    "name": "field1",
+  },
+  Object {
+    "fields": Array [
+      Object {
+        "fields": Array [],
+        "name": "field2",
+      },
+    ],
+    "name": "model2",
+  },
+]
+`;
+
+exports[`info parse all fields 1`] = `
+Array [
+  Object {
+    "fields": Array [
+      Object {
+        "fields": Array [
+          Object {
+            "fields": Array [],
+            "name": "field1",
+          },
+        ],
+        "name": "model1",
+      },
+      Object {
+        "fields": Array [
+          Object {
+            "fields": Array [],
+            "name": "field2",
+          },
+        ],
+        "name": "model2",
+      },
+    ],
+    "name": "node",
+  },
+]
+`;
