@@ -2,6 +2,7 @@ import * as g from "graphql";
 export type Field = {
     name: string;
     fields: Fields;
+    args: g.GraphQLArgument[];
     type?: g.GraphQLOutputType;
     isFragment?: boolean;
     isNode: boolean;
@@ -69,6 +70,7 @@ export class GraphQLFieldsInfo {
     }
     protected parseFieldNode(node: g.FieldNode): Field {
         return {
+            args: [],
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
             isNode: false,
@@ -76,6 +78,7 @@ export class GraphQLFieldsInfo {
     }
     protected parseFragmentSpreadNode(node: g.FragmentSpreadNode): Field {
         return {
+            args: [],
             name: node.name.value,
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
@@ -84,6 +87,7 @@ export class GraphQLFieldsInfo {
     }
     protected parseInlineFragmentNode(node: g.InlineFragmentNode): Field {
         return {
+            args: [],
             name: "",
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
@@ -140,6 +144,7 @@ export class GraphQLFieldsInfo {
     }
     protected applySchemaToField(field: Field, graphqlField: g.GraphQLField<any, any>) {
         field.type = graphqlField.type;
+        field.args = graphqlField.args;
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
         if (typeof (graphqlInfo) !== "undefined") {
             const nodeInterface = this.getNodeInterface();

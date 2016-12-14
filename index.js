@@ -62,6 +62,7 @@ class GraphQLFieldsInfo {
     }
     parseFieldNode(node) {
         return {
+            args: [],
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
             isNode: false,
@@ -69,6 +70,7 @@ class GraphQLFieldsInfo {
     }
     parseFragmentSpreadNode(node) {
         return {
+            args: [],
             name: node.name.value,
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
@@ -77,6 +79,7 @@ class GraphQLFieldsInfo {
     }
     parseInlineFragmentNode(node) {
         return {
+            args: [],
             name: "",
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
@@ -127,6 +130,7 @@ class GraphQLFieldsInfo {
     }
     applySchemaToField(field, graphqlField) {
         field.type = graphqlField.type;
+        field.args = graphqlField.args;
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
         if (typeof (graphqlInfo) !== "undefined") {
             const nodeInterface = this.getNodeInterface();
