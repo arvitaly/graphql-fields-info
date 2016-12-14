@@ -64,6 +64,7 @@ class GraphQLFieldsInfo {
         return {
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
+            isNode: false,
         };
     }
     parseFragmentSpreadNode(node) {
@@ -71,6 +72,7 @@ class GraphQLFieldsInfo {
             name: node.name.value,
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
+            isNode: false,
         };
     }
     parseInlineFragmentNode(node) {
@@ -78,6 +80,7 @@ class GraphQLFieldsInfo {
             name: "",
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
+            isNode: false,
         };
     }
     parseSelectionNode(node) {
@@ -92,16 +95,19 @@ class GraphQLFieldsInfo {
         }
         throw new Error("Unknown kind");
     }
-    getFieldsFromOutputType(type) {
-        let graphqlFields;
+    getInfoFromOutputType(type) {
+        let info;
         if (type instanceof g.GraphQLObjectType) {
-            graphqlFields = type.getFields();
+            info = {
+                fields: type.getFields(),
+                interfaces: type.getInterfaces(),
+            };
         }
         if (type instanceof g.GraphQLList) {
-            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+            info = this.getInfoFromOutputType(type.ofType);
         }
         if (type instanceof g.GraphQLNonNull) {
-            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+            info = this.getInfoFromOutputType(type.ofType);
         }
         if (type instanceof g.GraphQLEnumType) {
             // TODO
@@ -111,16 +117,28 @@ class GraphQLFieldsInfo {
             // TODO
             throw new Error("Not implemented union type");
         }
-        return graphqlFields;
+        return info;
+    }
+    getNodeInterface() {
+        if (!this.schema) {
+            throw new Error("Need schema for get node type");
+        }
+        return this.schema.getType("Node");
     }
     applySchemaToField(field, graphqlField) {
         field.type = graphqlField.type;
-        const graphqlFields = this.getFieldsFromOutputType(graphqlField.type);
+        const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
+        if (typeof (graphqlInfo) !== "undefined") {
+            const nodeInterface = this.getNodeInterface();
+            if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
+                field.isNode = true;
+            }
+        }
         if (field.fields.length > 0) {
-            if (typeof (graphqlFields) === "undefined") {
+            if (typeof (graphqlInfo) === "undefined") {
                 throw new Error("Invalid type for field " + field.name);
             }
-            this.applySchemaToFields(field.fields, graphqlFields);
+            this.applySchemaToFields(field.fields, graphqlInfo.fields);
         }
     }
     applySchemaToFields(fields, graphqlFields) {
@@ -137,11 +155,13 @@ class GraphQLFieldsInfo {
         }
         switch (this.operation.operation) {
             case "query":
-                const graphqlFields = this.schema.getQueryType().getFields();
-                this.applySchemaToFields(this.fields, graphqlFields);
+                this.applySchemaToFields(this.fields, this.schema.getQueryType().getFields());
+                break;
             case "mutation":
+                this.applySchemaToFields(this.fields, this.schema.getMutationType().getFields());
                 break;
             case "subscription":
+                this.applySchemaToFields(this.fields, this.schema.getSubscriptionType().getFields());
                 break;
             default:
         }

@@ -1,5 +1,9 @@
 import * as g from "graphql";
+import { nodeDefinitions } from "graphql-relay";
 import { fromQuery } from "./..";
+const nodeInterface = nodeDefinitions(() => {/* */ }, () => {
+    return null as any;
+});
 describe("info", () => {
     it("simple query", () => {
         const schema = new g.GraphQLSchema({
@@ -60,6 +64,7 @@ describe("info", () => {
                         type: new g.GraphQLObjectType({
                             name: "Viewer",
                             fields: {
+                                id: { type: new g.GraphQLNonNull(g.GraphQLID) },
                                 model1: {
                                     type: new g.GraphQLObjectType({
                                         name: "Model1Connection",
@@ -72,16 +77,23 @@ describe("info", () => {
                                                             type: new g.GraphQLObjectType({
                                                                 name: "Model1",
                                                                 fields: {
+                                                                    id: { type: new g.GraphQLNonNull(g.GraphQLID) },
                                                                     field1: { type: g.GraphQLString },
                                                                     model2: {
                                                                         type: new g.GraphQLObjectType({
                                                                             name: "Model2",
                                                                             fields: {
                                                                                 field2: { type: g.GraphQLInt },
+                                                                                id: {
+                                                                                    type:
+                                                                                    new g.GraphQLNonNull(g.GraphQLID),
+                                                                                },
                                                                             },
+                                                                            interfaces: [nodeInterface.nodeInterface],
                                                                         }),
                                                                     },
                                                                 },
+                                                                interfaces: [nodeInterface.nodeInterface],
                                                             }),
                                                         },
                                                     },
@@ -99,6 +111,7 @@ describe("info", () => {
                                     }),
                                 },
                             },
+                            interfaces: [nodeInterface.nodeInterface],
                         }),
                     },
                 },

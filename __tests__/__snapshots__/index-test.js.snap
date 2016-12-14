@@ -4,9 +4,11 @@ Array [
     "fields": Array [
       Object {
         "fields": Array [],
+        "isNode": false,
         "name": "field1",
       },
     ],
+    "isNode": false,
     "name": "model1",
   },
 ]
@@ -16,6 +18,7 @@ exports[`info get query connection fields simple 1`] = `
 Array [
   Object {
     "fields": Array [],
+    "isNode": false,
     "name": "name",
   },
 ]
@@ -31,10 +34,12 @@ Array [
             "fields": Array [
               Object {
                 "fields": Array [],
+                "isNode": false,
                 "name": "hasNextPage",
                 "type": "Boolean",
               },
             ],
+            "isNode": false,
             "name": "pageInfo",
             "type": "Model1ConnectionPageInfo",
           },
@@ -44,6 +49,7 @@ Array [
                 "fields": Array [
                   Object {
                     "fields": Array [],
+                    "isNode": false,
                     "name": "field1",
                     "type": "String",
                   },
@@ -51,26 +57,32 @@ Array [
                     "fields": Array [
                       Object {
                         "fields": Array [],
+                        "isNode": false,
                         "name": "field2",
                         "type": "Int",
                       },
                     ],
+                    "isNode": true,
                     "name": "model2",
                     "type": "Model2",
                   },
                 ],
+                "isNode": true,
                 "name": "node",
                 "type": "Model1",
               },
             ],
+            "isNode": false,
             "name": "edges",
             "type": "[Model1ConnectionEdge]!",
           },
         ],
+        "isNode": false,
         "name": "model1",
         "type": "Model1Connection",
       },
     ],
+    "isNode": true,
     "name": "viewer",
     "type": "Viewer",
   },
@@ -81,6 +93,7 @@ exports[`info get query connection fields with fragments 2`] = `
 Array [
   Object {
     "fields": Array [],
+    "isNode": false,
     "name": "field1",
     "type": "String",
   },
@@ -88,10 +101,12 @@ Array [
     "fields": Array [
       Object {
         "fields": Array [],
+        "isNode": false,
         "name": "field2",
         "type": "Int",
       },
     ],
+    "isNode": true,
     "name": "model2",
     "type": "Model2",
   },
@@ -102,15 +117,18 @@ exports[`info get query one fields 1`] = `
 Array [
   Object {
     "fields": Array [],
+    "isNode": false,
     "name": "field1",
   },
   Object {
     "fields": Array [
       Object {
         "fields": Array [],
+        "isNode": false,
         "name": "field2",
       },
     ],
+    "isNode": false,
     "name": "model2",
   },
 ]
@@ -124,21 +142,26 @@ Array [
         "fields": Array [
           Object {
             "fields": Array [],
+            "isNode": false,
             "name": "field1",
           },
         ],
+        "isNode": false,
         "name": "model1",
       },
       Object {
         "fields": Array [
           Object {
             "fields": Array [],
+            "isNode": false,
             "name": "field2",
           },
         ],
+        "isNode": false,
         "name": "model2",
       },
     ],
+    "isNode": false,
     "name": "node",
   },
 ]
@@ -148,6 +171,7 @@ exports[`info simple query 1`] = `
 Array [
   Object {
     "fields": Array [],
+    "isNode": false,
     "name": "test",
     "type": "String",
   },

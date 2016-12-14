@@ -4,6 +4,7 @@ export type Field = {
     fields: Fields;
     type?: g.GraphQLOutputType;
     isFragment?: boolean;
+    isNode: boolean;
 };
 export type Fields = Field[];
 export class GraphQLFieldsInfo {
@@ -70,6 +71,7 @@ export class GraphQLFieldsInfo {
         return {
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
+            isNode: false,
         };
     }
     protected parseFragmentSpreadNode(node: g.FragmentSpreadNode): Field {
@@ -77,6 +79,7 @@ export class GraphQLFieldsInfo {
             name: node.name.value,
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
+            isNode: false,
         };
     }
     protected parseInlineFragmentNode(node: g.InlineFragmentNode): Field {
@@ -84,6 +87,7 @@ export class GraphQLFieldsInfo {
             name: "",
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
+            isNode: false,
         };
     }
     protected parseSelectionNode(node: g.SelectionNode): Field {
@@ -98,16 +102,25 @@ export class GraphQLFieldsInfo {
         }
         throw new Error("Unknown kind");
     }
-    protected getFieldsFromOutputType(type: g.GraphQLOutputType): g.GraphQLFieldMap<any, any> | undefined {
-        let graphqlFields: g.GraphQLFieldMap<any, any> | undefined;
+    protected getInfoFromOutputType(type: g.GraphQLOutputType): {
+        fields: g.GraphQLFieldMap<any, any>;
+        interfaces: g.GraphQLInterfaceType[];
+    } | undefined {
+        let info: {
+            fields: g.GraphQLFieldMap<any, any>;
+            interfaces: g.GraphQLInterfaceType[];
+        } | undefined;
         if (type instanceof g.GraphQLObjectType) {
-            graphqlFields = type.getFields();
+            info = {
+                fields: type.getFields(),
+                interfaces: type.getInterfaces(),
+            };
         }
         if (type instanceof g.GraphQLList) {
-            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+            info = this.getInfoFromOutputType(type.ofType);
         }
         if (type instanceof g.GraphQLNonNull) {
-            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+            info = this.getInfoFromOutputType(type.ofType);
         }
         if (type instanceof g.GraphQLEnumType) {
             // TODO
@@ -117,16 +130,28 @@ export class GraphQLFieldsInfo {
             // TODO
             throw new Error("Not implemented union type");
         }
-        return graphqlFields;
+        return info;
+    }
+    protected getNodeInterface() {
+        if (!this.schema) {
+            throw new Error("Need schema for get node type");
+        }
+        return this.schema.getType("Node");
     }
     protected applySchemaToField(field: Field, graphqlField: g.GraphQLField<any, any>) {
         field.type = graphqlField.type;
-        const graphqlFields = this.getFieldsFromOutputType(graphqlField.type);
+        const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
+        if (typeof (graphqlInfo) !== "undefined") {
+            const nodeInterface = this.getNodeInterface();
+            if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
+                field.isNode = true;
+            }
+        }
         if (field.fields.length > 0) {
-            if (typeof (graphqlFields) === "undefined") {
+            if (typeof (graphqlInfo) === "undefined") {
                 throw new Error("Invalid type for field " + field.name);
             }
-            this.applySchemaToFields(field.fields, graphqlFields);
+            this.applySchemaToFields(field.fields, graphqlInfo.fields);
         }
     }
     protected applySchemaToFields(fields: Fields, graphqlFields: g.GraphQLFieldMap<any, any>) {
@@ -143,16 +168,17 @@ export class GraphQLFieldsInfo {
         }
         switch (this.operation.operation) {
             case "query":
-                const graphqlFields = this.schema.getQueryType().getFields();
-                this.applySchemaToFields(this.fields, graphqlFields);
+                this.applySchemaToFields(this.fields, this.schema.getQueryType().getFields());
+                break;
             case "mutation":
+                this.applySchemaToFields(this.fields, this.schema.getMutationType().getFields());
                 break;
             case "subscription":
+                this.applySchemaToFields(this.fields, this.schema.getSubscriptionType().getFields());
                 break;
             default:
         }
     }
-
 };
 export function fromQuery(q: string, schema?: g.GraphQLSchema) {
     const document = g.parse(q);
