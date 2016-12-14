@@ -44,6 +44,14 @@ class GraphQLFieldsInfo {
         }
         return edgesNodeNode.fields;
     }
+    print() {
+        if (!this.schema) {
+            return;
+        }
+        return g.print(this.operation) + "\n" + Object.keys(this.fragments).map((fragmentName) => {
+            return g.print(this.fragments[fragmentName]);
+        }).join("\n");
+    }
     parseAllFields() {
         return this.parseSelectionSetNode(this.operation.selectionSet);
     }

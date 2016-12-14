@@ -6,7 +6,7 @@ const nodeInterface = graphql_relay_1.nodeDefinitions(() => { }, () => {
     return null;
 });
 describe("info", () => {
-    it("simple query", () => {
+    it("simple query and print", () => {
         const schema = new g.GraphQLSchema({
             query: new g.GraphQLObjectType({
                 name: "Query",
@@ -19,6 +19,7 @@ describe("info", () => {
             test
         }`, schema);
         expect(parser.getFields()).toMatchSnapshot();
+        expect(parser.print()).toMatchSnapshot();
     });
     it("parse all fields", () => {
         const parser = __1.fromQuery(`query Q1{ 
@@ -142,5 +143,6 @@ describe("info", () => {
             `, schema);
         expect(parser.getFields()).toMatchSnapshot();
         expect(parser.getQueryConnectionFields()).toMatchSnapshot();
+        expect(parser.print()).toMatchSnapshot();
     });
 });

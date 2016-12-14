@@ -1,8 +1,10 @@
 exports[`info get node fields 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [
       Object {
+        "args": Array [],
         "fields": Array [],
         "isNode": false,
         "name": "field1",
@@ -17,6 +19,7 @@ Array [
 exports[`info get query connection fields simple 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [],
     "isNode": false,
     "name": "name",
@@ -27,12 +30,16 @@ Array [
 exports[`info get query connection fields with fragments 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [
       Object {
+        "args": Array [],
         "fields": Array [
           Object {
+            "args": Array [],
             "fields": Array [
               Object {
+                "args": Array [],
                 "fields": Array [],
                 "isNode": false,
                 "name": "hasNextPage",
@@ -44,18 +51,23 @@ Array [
             "type": "Model1ConnectionPageInfo",
           },
           Object {
+            "args": Array [],
             "fields": Array [
               Object {
+                "args": Array [],
                 "fields": Array [
                   Object {
+                    "args": Array [],
                     "fields": Array [],
                     "isNode": false,
                     "name": "field1",
                     "type": "String",
                   },
                   Object {
+                    "args": Array [],
                     "fields": Array [
                       Object {
+                        "args": Array [],
                         "fields": Array [],
                         "isNode": false,
                         "name": "field2",
@@ -92,14 +104,17 @@ Array [
 exports[`info get query connection fields with fragments 2`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [],
     "isNode": false,
     "name": "field1",
     "type": "String",
   },
   Object {
+    "args": Array [],
     "fields": Array [
       Object {
+        "args": Array [],
         "fields": Array [],
         "isNode": false,
         "name": "field2",
@@ -113,16 +128,45 @@ Array [
 ]
 `;
 
+exports[`info get query connection fields with fragments 3`] = `
+"query Q1 {
+  viewer {
+    model1(first: 10) {
+      pageInfo {
+        hasNextPage
+      }
+      ...F1
+    }
+  }
+}
+fragment F1 on Model1Connection {
+  edges {
+    node {
+      ...F2
+    }
+  }
+}
+fragment F2 on Model1 {
+  field1
+  model2 {
+    field2
+  }
+}"
+`;
+
 exports[`info get query one fields 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [],
     "isNode": false,
     "name": "field1",
   },
   Object {
+    "args": Array [],
     "fields": Array [
       Object {
+        "args": Array [],
         "fields": Array [],
         "isNode": false,
         "name": "field2",
@@ -137,10 +181,13 @@ Array [
 exports[`info parse all fields 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [
       Object {
+        "args": Array [],
         "fields": Array [
           Object {
+            "args": Array [],
             "fields": Array [],
             "isNode": false,
             "name": "field1",
@@ -150,8 +197,10 @@ Array [
         "name": "model1",
       },
       Object {
+        "args": Array [],
         "fields": Array [
           Object {
+            "args": Array [],
             "fields": Array [],
             "isNode": false,
             "name": "field2",
@@ -167,13 +216,21 @@ Array [
 ]
 `;
 
-exports[`info simple query 1`] = `
+exports[`info simple query and print 1`] = `
 Array [
   Object {
+    "args": Array [],
     "fields": Array [],
     "isNode": false,
     "name": "test",
     "type": "String",
   },
 ]
+`;
+
+exports[`info simple query and print 2`] = `
+"query Q1 {
+  test
+}
+"
 `;

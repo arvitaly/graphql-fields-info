@@ -53,6 +53,14 @@ export class GraphQLFieldsInfo {
         }
         return edgesNodeNode.fields;
     }
+    public print() {
+        if (!this.schema) {
+            return;
+        }
+        return g.print(this.operation) + "\n" + Object.keys(this.fragments).map((fragmentName) => {
+            return g.print(this.fragments[fragmentName]);
+        }).join("\n");
+    }
     protected parseAllFields() {
         return this.parseSelectionSetNode(this.operation.selectionSet);
     }
