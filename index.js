@@ -1,14 +1,16 @@
 "use strict";
-const graphql_1 = require("graphql");
+const g = require("graphql");
 class GraphQLFieldsInfo {
-    constructor(operation, fragments) {
+    constructor(operation, fragments, schema) {
         this.operation = operation;
         this.fragments = fragments;
+        this.schema = schema;
     }
     getFields() {
         if (!this.fields) {
             this.fields = this.parseAllFields();
         }
+        this.applySchema();
         return this.fields;
     }
     getNodeFields() {
@@ -48,12 +50,12 @@ class GraphQLFieldsInfo {
     parseSelectionSetNode(node) {
         let fields = [];
         node.selections.map((childNode) => {
-            const field = this.parseSelectionNode(childNode);
-            if (field.isFragment) {
-                fields = fields.concat(field.fields);
+            const child = this.parseSelectionNode(childNode);
+            if (child.isFragment) {
+                fields = fields.concat(child.fields);
             }
             else {
-                fields.push(field);
+                fields.push(child);
             }
         });
         return fields;
@@ -90,11 +92,65 @@ class GraphQLFieldsInfo {
         }
         throw new Error("Unknown kind");
     }
+    getFieldsFromOutputType(type) {
+        let graphqlFields;
+        if (type instanceof g.GraphQLObjectType) {
+            graphqlFields = type.getFields();
+        }
+        if (type instanceof g.GraphQLList) {
+            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+        }
+        if (type instanceof g.GraphQLNonNull) {
+            graphqlFields = this.getFieldsFromOutputType(type.ofType);
+        }
+        if (type instanceof g.GraphQLEnumType) {
+            // TODO
+            throw new Error("Not implemented enum type");
+        }
+        if (type instanceof g.GraphQLUnionType) {
+            // TODO
+            throw new Error("Not implemented union type");
+        }
+        return graphqlFields;
+    }
+    applySchemaToField(field, graphqlField) {
+        field.type = graphqlField.type;
+        const graphqlFields = this.getFieldsFromOutputType(graphqlField.type);
+        if (field.fields.length > 0) {
+            if (typeof (graphqlFields) === "undefined") {
+                throw new Error("Invalid type for field " + field.name);
+            }
+            this.applySchemaToFields(field.fields, graphqlFields);
+        }
+    }
+    applySchemaToFields(fields, graphqlFields) {
+        fields.map((field) => {
+            if (!graphqlFields[field.name]) {
+                throw new Error("Not found schema-field for field: " + field.name);
+            }
+            this.applySchemaToField(field, graphqlFields[field.name]);
+        });
+    }
+    applySchema() {
+        if (!this.schema) {
+            return;
+        }
+        switch (this.operation.operation) {
+            case "query":
+                const graphqlFields = this.schema.getQueryType().getFields();
+                this.applySchemaToFields(this.fields, graphqlFields);
+            case "mutation":
+                break;
+            case "subscription":
+                break;
+            default:
+        }
+    }
 }
 exports.GraphQLFieldsInfo = GraphQLFieldsInfo;
 ;
-function fromQuery(q) {
-    const document = graphql_1.parse(q);
+function fromQuery(q, schema) {
+    const document = g.parse(q);
     let fragments = {};
     document.definitions.filter((definition) => {
         return definition.kind === "FragmentDefinition";
@@ -103,11 +159,11 @@ function fromQuery(q) {
     });
     const operation = document
         .definitions.find((node) => node.kind === "OperationDefinition");
-    return new GraphQLFieldsInfo(operation, fragments);
+    return new GraphQLFieldsInfo(operation, fragments, schema);
 }
 exports.fromQuery = fromQuery;
-function fromResolveInfo(info) {
-    return new GraphQLFieldsInfo(info.operation, info.fragments);
+function fromResolveInfo(info, schema) {
+    return new GraphQLFieldsInfo(info.operation, info.fragments, schema);
 }
 exports.fromResolveInfo = fromResolveInfo;
 Object.defineProperty(exports, "__esModule", { value: true });

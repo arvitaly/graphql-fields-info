@@ -26,20 +26,74 @@ Array [
   Object {
     "fields": Array [
       Object {
-        "fields": Array [],
-        "name": "field1",
-      },
-      Object {
         "fields": Array [
           Object {
-            "fields": Array [],
-            "name": "field2",
+            "fields": Array [
+              Object {
+                "fields": Array [],
+                "name": "hasNextPage",
+                "type": "Boolean",
+              },
+            ],
+            "name": "pageInfo",
+            "type": "Model1ConnectionPageInfo",
+          },
+          Object {
+            "fields": Array [
+              Object {
+                "fields": Array [
+                  Object {
+                    "fields": Array [],
+                    "name": "field1",
+                    "type": "String",
+                  },
+                  Object {
+                    "fields": Array [
+                      Object {
+                        "fields": Array [],
+                        "name": "field2",
+                        "type": "Int",
+                      },
+                    ],
+                    "name": "model2",
+                    "type": "Model2",
+                  },
+                ],
+                "name": "node",
+                "type": "Model1",
+              },
+            ],
+            "name": "edges",
+            "type": "[Model1ConnectionEdge]!",
           },
         ],
-        "name": "model2",
+        "name": "model1",
+        "type": "Model1Connection",
       },
     ],
-    "name": "model1",
+    "name": "viewer",
+    "type": "Viewer",
+  },
+]
+`;
+
+exports[`info get query connection fields with fragments 2`] = `
+Array [
+  Object {
+    "fields": Array [],
+    "name": "field1",
+    "type": "String",
+  },
+  Object {
+    "fields": Array [
+      Object {
+        "fields": Array [],
+        "name": "field2",
+        "type": "Int",
+      },
+    ],
+    "name": "model2",
+    "type": "Model2",
   },
 ]
 `;
@@ -86,6 +140,16 @@ Array [
       },
     ],
     "name": "node",
+  },
+]
+`;
+
+exports[`info simple query 1`] = `
+Array [
+  Object {
+    "fields": Array [],
+    "name": "test",
+    "type": "String",
   },
 ]
 `;
