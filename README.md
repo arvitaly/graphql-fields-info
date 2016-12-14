@@ -22,11 +22,11 @@ Util for work with GraphQLResolveInfo
     npm install
     npm test
 
-[npm-image]: https://badge.fury.io/js/graphql-query-info.svg
-[npm-url]: https://npmjs.org/package/graphql-query-info
-[travis-image]: https://travis-ci.org/arvitaly/graphql-query-info.svg?branch=master
-[travis-url]: https://travis-ci.org/arvitaly/graphql-query-info
-[daviddm-image]: https://david-dm.org/arvitaly/graphql-query-info.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/arvitaly/graphql-query-info
-[coveralls-image]: https://coveralls.io/repos/arvitaly/graphql-query-info/badge.svg
-[coveralls-url]: https://coveralls.io/r/arvitaly/graphql-query-info
+[npm-image]: https://badge.fury.io/js/graphql-fields-info.svg
+[npm-url]: https://npmjs.org/package/graphql-fields-info
+[travis-image]: https://travis-ci.org/arvitaly/graphql-fields-info.svg?branch=master
+[travis-url]: https://travis-ci.org/arvitaly/graphql-fields-info
+[daviddm-image]: https://david-dm.org/arvitaly/graphql-fields-info.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/arvitaly/graphql-fields-info
+[coveralls-image]: https://coveralls.io/repos/arvitaly/graphql-fields-info/badge.svg
+[coveralls-url]: https://coveralls.io/r/arvitaly/graphql-fields-info
