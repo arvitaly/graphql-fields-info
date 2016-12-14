@@ -6,6 +6,7 @@ Array [
       Object {
         "args": Array [],
         "fields": Array [],
+        "isConnection": false,
         "isNode": false,
         "name": "field1",
         "node": Object {
@@ -29,6 +30,7 @@ Array [
         },
       },
     ],
+    "isConnection": false,
     "isNode": false,
     "name": "model1",
     "node": Object {
@@ -86,6 +88,7 @@ Array [
   Object {
     "args": Array [],
     "fields": Array [],
+    "isConnection": false,
     "isNode": false,
     "name": "name",
     "node": Object {
@@ -125,6 +128,7 @@ Array [
               Object {
                 "args": Array [],
                 "fields": Array [],
+                "isConnection": false,
                 "isNode": false,
                 "name": "hasNextPage",
                 "node": Object {
@@ -149,6 +153,7 @@ Array [
                 "type": "Boolean",
               },
             ],
+            "isConnection": false,
             "isNode": false,
             "name": "pageInfo",
             "node": Object {
@@ -208,6 +213,7 @@ Array [
                   Object {
                     "args": Array [],
                     "fields": Array [],
+                    "isConnection": false,
                     "isNode": false,
                     "name": "field1",
                     "node": Object {
@@ -237,6 +243,7 @@ Array [
                       Object {
                         "args": Array [],
                         "fields": Array [],
+                        "isConnection": false,
                         "isNode": false,
                         "name": "field2",
                         "node": Object {
@@ -261,6 +268,7 @@ Array [
                         "type": "Int",
                       },
                     ],
+                    "isConnection": false,
                     "isNode": true,
                     "name": "model2",
                     "node": Object {
@@ -312,6 +320,7 @@ Array [
                     "type": "Model2",
                   },
                 ],
+                "isConnection": false,
                 "isNode": true,
                 "name": "node",
                 "node": Object {
@@ -360,6 +369,7 @@ Array [
                 "type": "Model1",
               },
             ],
+            "isConnection": false,
             "isNode": false,
             "name": "edges",
             "node": Object {
@@ -435,6 +445,7 @@ Array [
             "type": "[Model1ConnectionEdge]!",
           },
         ],
+        "isConnection": true,
         "isNode": false,
         "name": "model1",
         "node": Object {
@@ -553,6 +564,7 @@ Array [
         "type": "Model1Connection",
       },
     ],
+    "isConnection": false,
     "isNode": true,
     "name": "viewer",
     "node": Object {
@@ -705,6 +717,7 @@ Array [
   Object {
     "args": Array [],
     "fields": Array [],
+    "isConnection": false,
     "isNode": false,
     "name": "field1",
     "node": Object {
@@ -734,6 +747,7 @@ Array [
       Object {
         "args": Array [],
         "fields": Array [],
+        "isConnection": false,
         "isNode": false,
         "name": "field2",
         "node": Object {
@@ -758,6 +772,7 @@ Array [
         "type": "Int",
       },
     ],
+    "isConnection": false,
     "isNode": true,
     "name": "model2",
     "node": Object {
@@ -843,6 +858,7 @@ Array [
   Object {
     "args": Array [],
     "fields": Array [],
+    "isConnection": false,
     "isNode": false,
     "name": "field1",
     "node": Object {
@@ -871,6 +887,7 @@ Array [
       Object {
         "args": Array [],
         "fields": Array [],
+        "isConnection": false,
         "isNode": false,
         "name": "field2",
         "node": Object {
@@ -894,6 +911,7 @@ Array [
         },
       },
     ],
+    "isConnection": false,
     "isNode": false,
     "name": "model2",
     "node": Object {
@@ -957,6 +975,7 @@ Array [
           Object {
             "args": Array [],
             "fields": Array [],
+            "isConnection": false,
             "isNode": false,
             "name": "field1",
             "node": Object {
@@ -980,6 +999,7 @@ Array [
             },
           },
         ],
+        "isConnection": false,
         "isNode": false,
         "name": "model1",
         "node": Object {
@@ -1035,6 +1055,7 @@ Array [
           Object {
             "args": Array [],
             "fields": Array [],
+            "isConnection": false,
             "isNode": false,
             "name": "field2",
             "node": Object {
@@ -1058,6 +1079,7 @@ Array [
             },
           },
         ],
+        "isConnection": false,
         "isNode": false,
         "name": "model2",
         "node": Object {
@@ -1140,6 +1162,7 @@ Array [
         },
       },
     ],
+    "isConnection": false,
     "isNode": false,
     "name": "node",
     "node": Object {
@@ -1302,6 +1325,7 @@ Array [
   Object {
     "args": Array [],
     "fields": Array [],
+    "isConnection": false,
     "isNode": false,
     "name": "test",
     "node": Object {

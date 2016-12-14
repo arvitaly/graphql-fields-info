@@ -73,6 +73,7 @@ class GraphQLFieldsInfo {
             args: [],
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
+            isConnection: false,
             isNode: false,
             node,
         };
@@ -82,6 +83,7 @@ class GraphQLFieldsInfo {
             args: [],
             name: node.name.value,
             isFragment: true,
+            isConnection: false,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
             isNode: false,
             node,
@@ -92,6 +94,7 @@ class GraphQLFieldsInfo {
             args: [],
             name: "",
             isFragment: true,
+            isConnection: false,
             fields: this.parseSelectionSetNode(node.selectionSet),
             isNode: false,
             node,
@@ -115,6 +118,7 @@ class GraphQLFieldsInfo {
             info = {
                 fields: type.getFields(),
                 interfaces: type.getInterfaces(),
+                isConnection: type.name.endsWith("Connection"),
             };
         }
         if (type instanceof g.GraphQLList) {
@@ -148,6 +152,7 @@ class GraphQLFieldsInfo {
             if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
                 field.isNode = true;
             }
+            field.isConnection = graphqlInfo.isConnection;
         }
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
