@@ -8,10 +8,75 @@ Array [
         "fields": Array [],
         "isNode": false,
         "name": "field1",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 30,
+            "start": 24,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 30,
+              "start": 24,
+            },
+            "value": "field1",
+          },
+          "selectionSet": null,
+        },
       },
     ],
     "isNode": false,
     "name": "model1",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 32,
+        "start": 16,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 22,
+          "start": 16,
+        },
+        "value": "model1",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 32,
+          "start": 22,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 30,
+              "start": 24,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 30,
+                "start": 24,
+              },
+              "value": "field1",
+            },
+            "selectionSet": null,
+          },
+        ],
+      },
+    },
   },
 ]
 `;
@@ -23,11 +88,30 @@ Array [
     "fields": Array [],
     "isNode": false,
     "name": "name",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 148,
+        "start": 144,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 148,
+          "start": 144,
+        },
+        "value": "name",
+      },
+      "selectionSet": null,
+    },
   },
 ]
 `;
 
-exports[`info get query connection fields with fragments 1`] = `
+exports[`info get query connection fields with fragments, change selection node and print 1`] = `
 Array [
   Object {
     "args": Array [],
@@ -43,11 +127,76 @@ Array [
                 "fields": Array [],
                 "isNode": false,
                 "name": "hasNextPage",
+                "node": Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 129,
+                    "start": 118,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 129,
+                      "start": 118,
+                    },
+                    "value": "hasNextPage",
+                  },
+                  "selectionSet": null,
+                },
                 "type": "Boolean",
               },
             ],
             "isNode": false,
             "name": "pageInfo",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 151,
+                "start": 84,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 92,
+                  "start": 84,
+                },
+                "value": "pageInfo",
+              },
+              "selectionSet": Object {
+                "kind": "SelectionSet",
+                "loc": Object {
+                  "end": 151,
+                  "start": 92,
+                },
+                "selections": Array [
+                  Object {
+                    "alias": null,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 129,
+                      "start": 118,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 129,
+                        "start": 118,
+                      },
+                      "value": "hasNextPage",
+                    },
+                    "selectionSet": null,
+                  },
+                ],
+              },
+            },
             "type": "Model1ConnectionPageInfo",
           },
           Object {
@@ -61,6 +210,25 @@ Array [
                     "fields": Array [],
                     "isNode": false,
                     "name": "field1",
+                    "node": Object {
+                      "alias": null,
+                      "arguments": Array [],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "loc": Object {
+                        "end": 451,
+                        "start": 445,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 451,
+                          "start": 445,
+                        },
+                        "value": "field1",
+                      },
+                      "selectionSet": null,
+                    },
                     "type": "String",
                   },
                   Object {
@@ -71,43 +239,493 @@ Array [
                         "fields": Array [],
                         "isNode": false,
                         "name": "field2",
+                        "node": Object {
+                          "alias": null,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 502,
+                            "start": 496,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 502,
+                              "start": 496,
+                            },
+                            "value": "field2",
+                          },
+                          "selectionSet": null,
+                        },
                         "type": "Int",
                       },
                     ],
                     "isNode": true,
                     "name": "model2",
+                    "node": Object {
+                      "alias": null,
+                      "arguments": Array [],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "loc": Object {
+                        "end": 520,
+                        "start": 468,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 474,
+                          "start": 468,
+                        },
+                        "value": "model2",
+                      },
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "loc": Object {
+                          "end": 520,
+                          "start": 474,
+                        },
+                        "selections": Array [
+                          Object {
+                            "alias": null,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "loc": Object {
+                              "end": 502,
+                              "start": 496,
+                            },
+                            "name": Object {
+                              "kind": "Name",
+                              "loc": Object {
+                                "end": 502,
+                                "start": 496,
+                              },
+                              "value": "field2",
+                            },
+                            "selectionSet": null,
+                          },
+                        ],
+                      },
+                    },
                     "type": "Model2",
                   },
                 ],
                 "isNode": true,
                 "name": "node",
+                "node": Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 360,
+                    "start": 301,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 305,
+                      "start": 301,
+                    },
+                    "value": "node",
+                  },
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "loc": Object {
+                      "end": 360,
+                      "start": 305,
+                    },
+                    "selections": Array [
+                      Object {
+                        "directives": Array [],
+                        "kind": "FragmentSpread",
+                        "loc": Object {
+                          "end": 337,
+                          "start": 332,
+                        },
+                        "name": Object {
+                          "kind": "Name",
+                          "loc": Object {
+                            "end": 337,
+                            "start": 335,
+                          },
+                          "value": "F2",
+                        },
+                      },
+                    ],
+                  },
+                },
                 "type": "Model1",
               },
             ],
             "isNode": false,
             "name": "edges",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 379,
+                "start": 273,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 278,
+                  "start": 273,
+                },
+                "value": "edges",
+              },
+              "selectionSet": Object {
+                "kind": "SelectionSet",
+                "loc": Object {
+                  "end": 379,
+                  "start": 278,
+                },
+                "selections": Array [
+                  Object {
+                    "alias": null,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 360,
+                      "start": 301,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 305,
+                        "start": 301,
+                      },
+                      "value": "node",
+                    },
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "loc": Object {
+                        "end": 360,
+                        "start": 305,
+                      },
+                      "selections": Array [
+                        Object {
+                          "directives": Array [],
+                          "kind": "FragmentSpread",
+                          "loc": Object {
+                            "end": 337,
+                            "start": 332,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 337,
+                              "start": 335,
+                            },
+                            "value": "F2",
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
             "type": "[Model1ConnectionEdge]!",
           },
         ],
         "isNode": false,
         "name": "model1",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [
+            Object {
+              "kind": "Argument",
+              "loc": Object {
+                "end": 61,
+                "start": 53,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 58,
+                  "start": 53,
+                },
+                "value": "first",
+              },
+              "value": Object {
+                "kind": "IntValue",
+                "loc": Object {
+                  "end": 61,
+                  "start": 59,
+                },
+                "value": "10",
+              },
+            },
+          ],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 195,
+            "start": 46,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 52,
+              "start": 46,
+            },
+            "value": "model1",
+          },
+          "selectionSet": Object {
+            "kind": "SelectionSet",
+            "loc": Object {
+              "end": 195,
+              "start": 62,
+            },
+            "selections": Array [
+              Object {
+                "alias": null,
+                "arguments": Array [],
+                "directives": Array [],
+                "kind": "Field",
+                "loc": Object {
+                  "end": 151,
+                  "start": 84,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 92,
+                    "start": 84,
+                  },
+                  "value": "pageInfo",
+                },
+                "selectionSet": Object {
+                  "kind": "SelectionSet",
+                  "loc": Object {
+                    "end": 151,
+                    "start": 92,
+                  },
+                  "selections": Array [
+                    Object {
+                      "alias": null,
+                      "arguments": Array [],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "loc": Object {
+                        "end": 129,
+                        "start": 118,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 129,
+                          "start": 118,
+                        },
+                        "value": "hasNextPage",
+                      },
+                      "selectionSet": null,
+                    },
+                  ],
+                },
+              },
+              Object {
+                "directives": Array [],
+                "kind": "FragmentSpread",
+                "loc": Object {
+                  "end": 177,
+                  "start": 172,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 177,
+                    "start": 175,
+                  },
+                  "value": "F1",
+                },
+              },
+            ],
+          },
+        },
         "type": "Model1Connection",
       },
     ],
     "isNode": true,
     "name": "viewer",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 196,
+        "start": 22,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 28,
+          "start": 22,
+        },
+        "value": "viewer",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 196,
+          "start": 28,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [
+              Object {
+                "kind": "Argument",
+                "loc": Object {
+                  "end": 61,
+                  "start": 53,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 58,
+                    "start": 53,
+                  },
+                  "value": "first",
+                },
+                "value": Object {
+                  "kind": "IntValue",
+                  "loc": Object {
+                    "end": 61,
+                    "start": 59,
+                  },
+                  "value": "10",
+                },
+              },
+            ],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 195,
+              "start": 46,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 52,
+                "start": 46,
+              },
+              "value": "model1",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "loc": Object {
+                "end": 195,
+                "start": 62,
+              },
+              "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 151,
+                    "start": 84,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 92,
+                      "start": 84,
+                    },
+                    "value": "pageInfo",
+                  },
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "loc": Object {
+                      "end": 151,
+                      "start": 92,
+                    },
+                    "selections": Array [
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "loc": Object {
+                          "end": 129,
+                          "start": 118,
+                        },
+                        "name": Object {
+                          "kind": "Name",
+                          "loc": Object {
+                            "end": 129,
+                            "start": 118,
+                          },
+                          "value": "hasNextPage",
+                        },
+                        "selectionSet": null,
+                      },
+                    ],
+                  },
+                },
+                Object {
+                  "directives": Array [],
+                  "kind": "FragmentSpread",
+                  "loc": Object {
+                    "end": 177,
+                    "start": 172,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 177,
+                      "start": 175,
+                    },
+                    "value": "F1",
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
     "type": "Viewer",
   },
 ]
 `;
 
-exports[`info get query connection fields with fragments 2`] = `
+exports[`info get query connection fields with fragments, change selection node and print 2`] = `
 Array [
   Object {
     "args": Array [],
     "fields": Array [],
     "isNode": false,
     "name": "field1",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 451,
+        "start": 445,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 451,
+          "start": 445,
+        },
+        "value": "field1",
+      },
+      "selectionSet": null,
+    },
     "type": "String",
   },
   Object {
@@ -118,17 +736,82 @@ Array [
         "fields": Array [],
         "isNode": false,
         "name": "field2",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 502,
+            "start": 496,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 502,
+              "start": 496,
+            },
+            "value": "field2",
+          },
+          "selectionSet": null,
+        },
         "type": "Int",
       },
     ],
     "isNode": true,
     "name": "model2",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 520,
+        "start": 468,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 474,
+          "start": 468,
+        },
+        "value": "model2",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 520,
+          "start": 474,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 502,
+              "start": 496,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 502,
+                "start": 496,
+              },
+              "value": "field2",
+            },
+            "selectionSet": null,
+          },
+        ],
+      },
+    },
     "type": "Model2",
   },
 ]
 `;
 
-exports[`info get query connection fields with fragments 3`] = `
+exports[`info get query connection fields with fragments, change selection node and print 3`] = `
 "query Q1 {
   viewer {
     model1(first: 10) {
@@ -143,6 +826,7 @@ fragment F1 on Model1Connection {
   edges {
     node {
       ...F2
+      id
     }
   }
 }
@@ -161,6 +845,25 @@ Array [
     "fields": Array [],
     "isNode": false,
     "name": "field1",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 32,
+        "start": 26,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 32,
+          "start": 26,
+        },
+        "value": "field1",
+      },
+      "selectionSet": null,
+    },
   },
   Object {
     "args": Array [],
@@ -170,10 +873,75 @@ Array [
         "fields": Array [],
         "isNode": false,
         "name": "field2",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 48,
+            "start": 42,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 48,
+              "start": 42,
+            },
+            "value": "field2",
+          },
+          "selectionSet": null,
+        },
       },
     ],
     "isNode": false,
     "name": "model2",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 50,
+        "start": 34,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 40,
+          "start": 34,
+        },
+        "value": "model2",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 50,
+          "start": 40,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 48,
+              "start": 42,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 48,
+                "start": 42,
+              },
+              "value": "field2",
+            },
+            "selectionSet": null,
+          },
+        ],
+      },
+    },
   },
 ]
 `;
@@ -191,10 +959,75 @@ Array [
             "fields": Array [],
             "isNode": false,
             "name": "field1",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 52,
+                "start": 46,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 52,
+                  "start": 46,
+                },
+                "value": "field1",
+              },
+              "selectionSet": null,
+            },
           },
         ],
         "isNode": false,
         "name": "model1",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 54,
+            "start": 38,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 44,
+              "start": 38,
+            },
+            "value": "model1",
+          },
+          "selectionSet": Object {
+            "kind": "SelectionSet",
+            "loc": Object {
+              "end": 54,
+              "start": 44,
+            },
+            "selections": Array [
+              Object {
+                "alias": null,
+                "arguments": Array [],
+                "directives": Array [],
+                "kind": "Field",
+                "loc": Object {
+                  "end": 52,
+                  "start": 46,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 52,
+                    "start": 46,
+                  },
+                  "value": "field1",
+                },
+                "selectionSet": null,
+              },
+            ],
+          },
+        },
       },
       Object {
         "args": Array [],
@@ -204,14 +1037,262 @@ Array [
             "fields": Array [],
             "isNode": false,
             "name": "field2",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 132,
+                "start": 126,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 132,
+                  "start": 126,
+                },
+                "value": "field2",
+              },
+              "selectionSet": null,
+            },
           },
         ],
         "isNode": false,
         "name": "model2",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 165,
+            "start": 67,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 73,
+              "start": 67,
+            },
+            "value": "model2",
+          },
+          "selectionSet": Object {
+            "kind": "SelectionSet",
+            "loc": Object {
+              "end": 165,
+              "start": 73,
+            },
+            "selections": Array [
+              Object {
+                "directives": Array [],
+                "kind": "InlineFragment",
+                "loc": Object {
+                  "end": 150,
+                  "start": 91,
+                },
+                "selectionSet": Object {
+                  "kind": "SelectionSet",
+                  "loc": Object {
+                    "end": 150,
+                    "start": 104,
+                  },
+                  "selections": Array [
+                    Object {
+                      "alias": null,
+                      "arguments": Array [],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "loc": Object {
+                        "end": 132,
+                        "start": 126,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 132,
+                          "start": 126,
+                        },
+                        "value": "field2",
+                      },
+                      "selectionSet": null,
+                    },
+                  ],
+                },
+                "typeCondition": Object {
+                  "kind": "NamedType",
+                  "loc": Object {
+                    "end": 104,
+                    "start": 98,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 104,
+                      "start": 98,
+                    },
+                    "value": "Model2",
+                  },
+                },
+              },
+            ],
+          },
+        },
       },
     ],
     "isNode": false,
     "name": "node",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 175,
+        "start": 19,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 23,
+          "start": 19,
+        },
+        "value": "node",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 175,
+          "start": 23,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 54,
+              "start": 38,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 44,
+                "start": 38,
+              },
+              "value": "model1",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "loc": Object {
+                "end": 54,
+                "start": 44,
+              },
+              "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 52,
+                    "start": 46,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 52,
+                      "start": 46,
+                    },
+                    "value": "field1",
+                  },
+                  "selectionSet": null,
+                },
+              ],
+            },
+          },
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 165,
+              "start": 67,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 73,
+                "start": 67,
+              },
+              "value": "model2",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "loc": Object {
+                "end": 165,
+                "start": 73,
+              },
+              "selections": Array [
+                Object {
+                  "directives": Array [],
+                  "kind": "InlineFragment",
+                  "loc": Object {
+                    "end": 150,
+                    "start": 91,
+                  },
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "loc": Object {
+                      "end": 150,
+                      "start": 104,
+                    },
+                    "selections": Array [
+                      Object {
+                        "alias": null,
+                        "arguments": Array [],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "loc": Object {
+                          "end": 132,
+                          "start": 126,
+                        },
+                        "name": Object {
+                          "kind": "Name",
+                          "loc": Object {
+                            "end": 132,
+                            "start": 126,
+                          },
+                          "value": "field2",
+                        },
+                        "selectionSet": null,
+                      },
+                    ],
+                  },
+                  "typeCondition": Object {
+                    "kind": "NamedType",
+                    "loc": Object {
+                      "end": 104,
+                      "start": 98,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 104,
+                        "start": 98,
+                      },
+                      "value": "Model2",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
   },
 ]
 `;
@@ -223,6 +1304,25 @@ Array [
     "fields": Array [],
     "isNode": false,
     "name": "test",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 26,
+        "start": 22,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 26,
+          "start": 22,
+        },
+        "value": "test",
+      },
+      "selectionSet": null,
+    },
     "type": "String",
   },
 ]

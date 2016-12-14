@@ -6,6 +6,7 @@ export type Field = {
     type?: g.GraphQLOutputType;
     isFragment?: boolean;
     isNode: boolean;
+    node: g.SelectionNode;
 };
 export type Fields = Field[];
 export class GraphQLFieldsInfo {
@@ -82,6 +83,7 @@ export class GraphQLFieldsInfo {
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
             isNode: false,
+            node,
         };
     }
     protected parseFragmentSpreadNode(node: g.FragmentSpreadNode): Field {
@@ -91,6 +93,7 @@ export class GraphQLFieldsInfo {
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
             isNode: false,
+            node,
         };
     }
     protected parseInlineFragmentNode(node: g.InlineFragmentNode): Field {
@@ -100,6 +103,7 @@ export class GraphQLFieldsInfo {
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
             isNode: false,
+            node,
         };
     }
     protected parseSelectionNode(node: g.SelectionNode): Field {

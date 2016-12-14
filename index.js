@@ -74,6 +74,7 @@ class GraphQLFieldsInfo {
             name: node.name.value,
             fields: node.selectionSet ? this.parseSelectionSetNode(node.selectionSet) : [],
             isNode: false,
+            node,
         };
     }
     parseFragmentSpreadNode(node) {
@@ -83,6 +84,7 @@ class GraphQLFieldsInfo {
             isFragment: true,
             fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
             isNode: false,
+            node,
         };
     }
     parseInlineFragmentNode(node) {
@@ -92,6 +94,7 @@ class GraphQLFieldsInfo {
             isFragment: true,
             fields: this.parseSelectionSetNode(node.selectionSet),
             isNode: false,
+            node,
         };
     }
     parseSelectionNode(node) {

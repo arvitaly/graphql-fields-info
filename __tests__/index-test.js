@@ -57,7 +57,7 @@ describe("info", () => {
         }`);
         expect(parser.getQueryConnectionFields()).toMatchSnapshot();
     });
-    it("get query connection fields with fragments", () => {
+    it("get query connection fields with fragments, change selection node and print", () => {
         const schema = new g.GraphQLSchema({
             query: new g.GraphQLObjectType({
                 name: "Query",
@@ -141,8 +141,16 @@ describe("info", () => {
                 }
             }
             `, schema);
-        expect(parser.getFields()).toMatchSnapshot();
+        const fields = parser.getFields();
+        expect(fields).toMatchSnapshot();
         expect(parser.getQueryConnectionFields()).toMatchSnapshot();
+        const sel = fields[0].fields[0].fields[1].fields[0].node.selectionSet;
+        if (sel) {
+            sel.selections.push({
+                name: { kind: "Name", value: "id" },
+                kind: "Field",
+            });
+        }
         expect(parser.print()).toMatchSnapshot();
     });
 });
