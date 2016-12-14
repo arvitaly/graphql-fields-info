@@ -1,6 +1,6 @@
 {
   "name": "graphql-fields-info",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Util for get fields from graphql-query or GraphQLResolveInfo",
   "main": "index.js",
   "scripts": {
