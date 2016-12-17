@@ -132,26 +132,25 @@ export class GraphQLFieldsInfo {
             interfaces: g.GraphQLInterfaceType[];
             isConnection: boolean;
         } | undefined;
-        if (type instanceof g.GraphQLObjectType) {
-            info = {
-                fields: type.getFields(),
-                interfaces: type.getInterfaces(),
-                isConnection: type.name.endsWith("Connection"),
-            };
-        }
-        if (type instanceof g.GraphQLList) {
-            info = this.getInfoFromOutputType(type.ofType);
-        }
-        if (type instanceof g.GraphQLNonNull) {
-            info = this.getInfoFromOutputType(type.ofType);
+
+        if (g.isCompositeType(type)) {
+            if (g.isAbstractType(type)) {
+                throw new Error("Not implemented union type");
+            } else {
+                info = {
+                    fields: type.getFields(),
+                    interfaces: type.getInterfaces(),
+                    isConnection: type.name.endsWith("Connection"),
+                };
+            }
+        } else {
+            if (typeof ((type as g.GraphQLList<any>).ofType) !== "undefined") {
+                info = this.getInfoFromOutputType((type as g.GraphQLList<any>).ofType);
+            }
         }
         if (type instanceof g.GraphQLEnumType) {
             // TODO
             throw new Error("Not implemented enum type");
-        }
-        if (type instanceof g.GraphQLUnionType) {
-            // TODO
-            throw new Error("Not implemented union type");
         }
         return info;
     }
