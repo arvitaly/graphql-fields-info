@@ -30,16 +30,20 @@ export class GraphQLFieldsInfo {
     public getQueryOneFields() {
         const viewerNode = this.getFields().find((f) => f.name === "viewer");
         if (!viewerNode) {
-            throw new Error("Not found ViewerNode");
+            throw new Error("GraphQLFieldInfo::Not found ViewerNode");
         }
         return viewerNode.fields[0].fields;
     }
     public getQueryConnectionFields() {
         const viewerNode = this.getFields().find((f) => f.name === "viewer");
         if (!viewerNode) {
-            throw new Error("Not found ViewerNode");
+            throw new Error("GraphQLFieldInfo::Not found ViewerNode");
         }
-        return this.getFieldsForConnection(viewerNode.fields[0]);
+        const connField = viewerNode.fields.find((f) => f.name !== "id");
+        if (!connField) {
+            throw new Error("GraphQLFieldInfo::Not found field for connection");
+        }
+        return this.getFieldsForConnection(connField);
     }
     public getMutationPayloadFields() {
         return this.getFields()[0].fields[0].fields;
@@ -47,11 +51,11 @@ export class GraphQLFieldsInfo {
     public getFieldsForConnection(field: Field) {
         const edgesNode = field.fields.find((f) => f.name === "edges");
         if (!edgesNode) {
-            throw new Error("Not found EdgesNode");
+            throw new Error("GraphQLFieldInfo::Not found EdgesNode");
         }
         const edgesNodeNode = edgesNode.fields.find((f) => f.name === "node");
         if (!edgesNodeNode) {
-            throw new Error("Not found edgesNodeNode");
+            throw new Error("GraphQLFieldInfo::Not found edgesNodeNode");
         }
         return edgesNodeNode.fields;
     }
@@ -135,7 +139,7 @@ export class GraphQLFieldsInfo {
 
         if (g.isCompositeType(type)) {
             if (g.isAbstractType(type)) {
-                throw new Error("Not implemented union type");
+                throw new Error("GraphQLFieldInfo::Not implemented union type");
             } else {
                 info = {
                     fields: type.getFields(),
@@ -150,13 +154,13 @@ export class GraphQLFieldsInfo {
         }
         if (type instanceof g.GraphQLEnumType) {
             // TODO
-            throw new Error("Not implemented enum type");
+            throw new Error("GraphQLFieldInfo::Not implemented enum type");
         }
         return info;
     }
     protected getNodeInterface() {
         if (!this.schema) {
-            throw new Error("Need schema for get node type");
+            throw new Error("GraphQLFieldInfo::Need schema for get node type");
         }
         return this.schema.getType("Node");
     }
@@ -173,7 +177,7 @@ export class GraphQLFieldsInfo {
         }
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
-                throw new Error("Invalid type for field " + field.name);
+                throw new Error("GraphQLFieldInfo::Invalid type for field " + field.name);
             }
             this.applySchemaToFields(field.fields, graphqlInfo.fields);
         }
@@ -181,7 +185,7 @@ export class GraphQLFieldsInfo {
     protected applySchemaToFields(fields: Fields, graphqlFields: g.GraphQLFieldMap<any, any>) {
         fields.map((field) => {
             if (!graphqlFields[field.name]) {
-                throw new Error("Not found schema-field for field: " + field.name);
+                throw new Error("GraphQLFieldInfo::Not found schema-field for field: " + field.name);
             }
             this.applySchemaToField(field, graphqlFields[field.name]);
         });
