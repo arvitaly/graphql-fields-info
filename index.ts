@@ -1,5 +1,6 @@
 import * as g from "graphql";
-export type Field = {
+// tslint:disable interface-name
+export interface Field {
     name: string;
     fields: Fields;
     args: g.GraphQLArgument[];
@@ -210,7 +211,7 @@ export class GraphQLFieldsInfo {
 };
 export function fromQuery(q: string, schema?: g.GraphQLSchema) {
     const document = g.parse(q);
-    let fragments: { [fragmentName: string]: g.FragmentDefinitionNode } = {};
+    const fragments: { [fragmentName: string]: g.FragmentDefinitionNode } = {};
     document.definitions.filter((definition) => {
         return definition.kind === "FragmentDefinition";
     }).map((node: g.FragmentDefinitionNode) => {

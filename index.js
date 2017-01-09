@@ -1,5 +1,6 @@
 "use strict";
 const g = require("graphql");
+;
 class GraphQLFieldsInfo {
     constructor(operation, fragments, schema) {
         this.operation = operation;
@@ -195,7 +196,7 @@ exports.GraphQLFieldsInfo = GraphQLFieldsInfo;
 ;
 function fromQuery(q, schema) {
     const document = g.parse(q);
-    let fragments = {};
+    const fragments = {};
     document.definitions.filter((definition) => {
         return definition.kind === "FragmentDefinition";
     }).map((node) => {
