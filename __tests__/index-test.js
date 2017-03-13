@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const g = require("graphql");
 const graphql_relay_1 = require("graphql-relay");
 const __1 = require("./..");

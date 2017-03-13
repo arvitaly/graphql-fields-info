@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const g = require("graphql");
 ;
 class GraphQLFieldsInfo {
@@ -211,5 +212,4 @@ function fromResolveInfo(info, schema) {
     return new GraphQLFieldsInfo(info.operation, info.fragments, schema);
 }
 exports.fromResolveInfo = fromResolveInfo;
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = fromQuery;
