@@ -23,15 +23,15 @@
   },
   "devDependencies": {
     "@types/graphql-relay": "^0.4.0",
-    "@types/jest": "^16.0.1",
+    "@types/jest": "^19.2.1",
     "coveralls": "^2.11.15",
-    "graphql-relay": "^0.4.4",
-    "jest": "^17.0.3",
+    "graphql-relay": "^0.5.1",
+    "jest": "^19.0.2",
     "tslint": "^4.3.1",
     "typescript": "^2.1.4"
   },
   "dependencies": {
     "@types/graphql": "^0.8.2",
-    "graphql": "^0.8.2"
+    "graphql": "^0.9.1"
   }
 }
