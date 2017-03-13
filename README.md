@@ -1,5 +1,7 @@
 # graphql-query-info
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/arvitaly/graphql-fields-info.svg)](https://greenkeeper.io/)
+
 Util for work with GraphQLResolveInfo
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
