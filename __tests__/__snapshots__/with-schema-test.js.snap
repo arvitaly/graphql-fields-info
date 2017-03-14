@@ -643,7 +643,7 @@ Array [
       },
     ],
     "isConnection": false,
-    "isNode": false,
+    "isNode": true,
     "name": "node",
     "node": Object {
       "alias": null,

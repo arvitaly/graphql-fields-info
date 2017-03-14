@@ -174,7 +174,7 @@ class GraphQLFieldsInfo {
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
         if (typeof (graphqlInfo) !== "undefined") {
             const nodeInterface = this.getNodeInterface();
-            if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
+            if (graphqlInfo.interfaces.find((i) => i === nodeInterface) || graphqlInfo.isInterface) {
                 field.isNode = true;
             }
             field.isConnection = graphqlInfo.isConnection;
