@@ -25,6 +25,9 @@ class GraphQLFieldsInfo {
         }
         return viewerNode.fields[0].fields;
     }
+    getNodeInterfaceFields() {
+        return this.getFields()[0].fields;
+    }
     getQueryConnectionFields() {
         const viewerNode = this.getFields().find((f) => f.name === "viewer");
         if (!viewerNode) {
@@ -174,14 +177,18 @@ class GraphQLFieldsInfo {
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
         if (typeof (graphqlInfo) !== "undefined") {
             const nodeInterface = this.getNodeInterface();
-            if (graphqlInfo.interfaces.find((i) => i === nodeInterface) || graphqlInfo.isInterface) {
+            if (graphqlInfo.isInterface) {
+                field.isInterface = true;
+            }
+            if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
                 field.isNode = true;
             }
             field.isConnection = graphqlInfo.isConnection;
         }
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
-                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`");
+                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`:`" +
+                    graphqlField.type + "`");
             }
             if (graphqlInfo.isInterface) {
                 // search fragment for resolve type for interface (e.g. Node-interface)

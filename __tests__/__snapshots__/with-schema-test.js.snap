@@ -643,7 +643,8 @@ Array [
       },
     ],
     "isConnection": false,
-    "isNode": true,
+    "isInterface": true,
+    "isNode": false,
     "name": "node",
     "node": Object {
       "alias": null,

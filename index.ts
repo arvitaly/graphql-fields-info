@@ -6,6 +6,7 @@ export interface Field {
     args: g.GraphQLArgument[];
     type?: g.GraphQLOutputType;
     isFragment?: boolean;
+    isInterface?: boolean;
     isNode: boolean;
     node: g.SelectionNode;
     isConnection: boolean;
@@ -35,6 +36,9 @@ export class GraphQLFieldsInfo {
             throw new Error("GraphQLFieldInfo::Not found ViewerNode");
         }
         return viewerNode.fields[0].fields;
+    }
+    public getNodeInterfaceFields() {
+        return this.getFields()[0].fields;
     }
     public getQueryConnectionFields() {
         const viewerNode = this.getFields().find((f) => f.name === "viewer");
@@ -145,7 +149,6 @@ export class GraphQLFieldsInfo {
             isConnection: boolean;
             isInterface: boolean;
         } | undefined;
-
         if (g.isCompositeType(type)) {
             if (g.isAbstractType(type)) {
                 if (type instanceof g.GraphQLInterfaceType) {
@@ -192,7 +195,10 @@ export class GraphQLFieldsInfo {
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
         if (typeof (graphqlInfo) !== "undefined") {
             const nodeInterface = this.getNodeInterface();
-            if (graphqlInfo.interfaces.find((i) => i === nodeInterface) || graphqlInfo.isInterface ) {
+            if (graphqlInfo.isInterface) {
+                field.isInterface = true;
+            }
+            if (graphqlInfo.interfaces.find((i) => i === nodeInterface)) {
                 field.isNode = true;
             }
             field.isConnection = graphqlInfo.isConnection;
@@ -200,7 +206,8 @@ export class GraphQLFieldsInfo {
 
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
-                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`");
+                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`:`" +
+                    graphqlField.type + "`");
             }
             if (graphqlInfo.isInterface) {
                 // search fragment for resolve type for interface (e.g. Node-interface)
