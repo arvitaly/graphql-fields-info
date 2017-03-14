@@ -1,122 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Info with schema node query 1`] = `
-Array [
-  Object {
-    "args": Array [
-      Object {
-        "defaultValue": undefined,
-        "description": "The ID of an object",
-        "name": "id",
-        "type": "ID!",
-      },
-    ],
-    "fields": Array [
-      Object {
-        "args": Array [],
-        "fields": Array [],
-        "isConnection": false,
-        "isNode": false,
-        "name": "field1",
-        "node": Object {
-          "alias": null,
-          "arguments": Array [],
-          "directives": Array [],
-          "kind": "Field",
-          "loc": Object {
-            "end": 131,
-            "start": 125,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 131,
-              "start": 125,
-            },
-            "value": "field1",
-          },
-          "selectionSet": null,
-        },
-        "type": "String",
-        "typeName": "Model1",
-      },
-    ],
-    "isConnection": false,
-    "isNode": false,
-    "name": "node",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [
-        Object {
-          "kind": "Argument",
-          "loc": Object {
-            "end": 33,
-            "start": 27,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 29,
-              "start": 27,
-            },
-            "value": "id",
-          },
-          "value": Object {
-            "kind": "StringValue",
-            "loc": Object {
-              "end": 33,
-              "start": 30,
-            },
-            "value": "1",
-          },
-        },
-      ],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 71,
-        "start": 22,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 26,
-          "start": 22,
-        },
-        "value": "node",
-      },
-      "selectionSet": Object {
-        "kind": "SelectionSet",
-        "loc": Object {
-          "end": 71,
-          "start": 34,
-        },
-        "selections": Array [
-          Object {
-            "directives": Array [],
-            "kind": "FragmentSpread",
-            "loc": Object {
-              "end": 57,
-              "start": 52,
-            },
-            "name": Object {
-              "kind": "Name",
-              "loc": Object {
-                "end": 57,
-                "start": 55,
-              },
-              "value": "F1",
-            },
-          },
-        ],
-      },
-    },
-    "type": "Node",
-  },
-]
-`;
-
-exports[`Info with schema one query 1`] = `
+exports[`Info with schema connection with fragment query 1`] = `
 Array [
   Object {
     "args": Array [],
@@ -713,6 +597,122 @@ Array [
       },
     },
     "type": "Viewer",
+  },
+]
+`;
+
+exports[`Info with schema node query 1`] = `
+Array [
+  Object {
+    "args": Array [
+      Object {
+        "defaultValue": undefined,
+        "description": "The ID of an object",
+        "name": "id",
+        "type": "ID!",
+      },
+    ],
+    "fields": Array [
+      Object {
+        "args": Array [],
+        "fields": Array [],
+        "isConnection": false,
+        "isNode": false,
+        "name": "field1",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 131,
+            "start": 125,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 131,
+              "start": 125,
+            },
+            "value": "field1",
+          },
+          "selectionSet": null,
+        },
+        "type": "String",
+        "typeName": "Model1",
+      },
+    ],
+    "isConnection": false,
+    "isNode": false,
+    "name": "node",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [
+        Object {
+          "kind": "Argument",
+          "loc": Object {
+            "end": 33,
+            "start": 27,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 29,
+              "start": 27,
+            },
+            "value": "id",
+          },
+          "value": Object {
+            "kind": "StringValue",
+            "loc": Object {
+              "end": 33,
+              "start": 30,
+            },
+            "value": "1",
+          },
+        },
+      ],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 71,
+        "start": 22,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 26,
+          "start": 22,
+        },
+        "value": "node",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 71,
+          "start": 34,
+        },
+        "selections": Array [
+          Object {
+            "directives": Array [],
+            "kind": "FragmentSpread",
+            "loc": Object {
+              "end": 57,
+              "start": 52,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 57,
+                "start": 55,
+              },
+              "value": "F1",
+            },
+          },
+        ],
+      },
+    },
+    "type": "Node",
   },
 ]
 `;
