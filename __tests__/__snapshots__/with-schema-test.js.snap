@@ -1,9 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`info get node fields 1`] = `
+exports[`Info with schema node query 1`] = `
 Array [
   Object {
-    "args": Array [],
+    "args": Array [
+      Object {
+        "defaultValue": undefined,
+        "description": "The ID of an object",
+        "name": "id",
+        "type": "ID!",
+      },
+    ],
     "fields": Array [
       Object {
         "args": Array [],
@@ -17,106 +24,99 @@ Array [
           "directives": Array [],
           "kind": "Field",
           "loc": Object {
-            "end": 38,
-            "start": 32,
+            "end": 131,
+            "start": 125,
           },
           "name": Object {
             "kind": "Name",
             "loc": Object {
-              "end": 38,
-              "start": 32,
+              "end": 131,
+              "start": 125,
             },
             "value": "field1",
           },
           "selectionSet": null,
         },
+        "type": "String",
+        "typeName": "Model1",
       },
     ],
     "isConnection": false,
     "isNode": false,
-    "name": "model1",
+    "name": "node",
     "node": Object {
       "alias": null,
-      "arguments": Array [],
+      "arguments": Array [
+        Object {
+          "kind": "Argument",
+          "loc": Object {
+            "end": 33,
+            "start": 27,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 29,
+              "start": 27,
+            },
+            "value": "id",
+          },
+          "value": Object {
+            "kind": "StringValue",
+            "loc": Object {
+              "end": 33,
+              "start": 30,
+            },
+            "value": "1",
+          },
+        },
+      ],
       "directives": Array [],
       "kind": "Field",
       "loc": Object {
-        "end": 40,
-        "start": 24,
+        "end": 71,
+        "start": 22,
       },
       "name": Object {
         "kind": "Name",
         "loc": Object {
-          "end": 30,
-          "start": 24,
+          "end": 26,
+          "start": 22,
         },
-        "value": "model1",
+        "value": "node",
       },
       "selectionSet": Object {
         "kind": "SelectionSet",
         "loc": Object {
-          "end": 40,
-          "start": 30,
+          "end": 71,
+          "start": 34,
         },
         "selections": Array [
           Object {
-            "alias": null,
-            "arguments": Array [],
             "directives": Array [],
-            "kind": "Field",
+            "kind": "FragmentSpread",
             "loc": Object {
-              "end": 38,
-              "start": 32,
+              "end": 57,
+              "start": 52,
             },
             "name": Object {
               "kind": "Name",
               "loc": Object {
-                "end": 38,
-                "start": 32,
+                "end": 57,
+                "start": 55,
               },
-              "value": "field1",
+              "value": "F1",
             },
-            "selectionSet": null,
           },
         ],
       },
     },
+    "type": "Node",
   },
 ]
 `;
 
-exports[`info get query connection fields simple 1`] = `
-Array [
-  Object {
-    "args": Array [],
-    "fields": Array [],
-    "isConnection": false,
-    "isNode": false,
-    "name": "name",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 148,
-        "start": 144,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 148,
-          "start": 144,
-        },
-        "value": "name",
-      },
-      "selectionSet": null,
-    },
-  },
-]
-`;
-
-exports[`info get query connection fields with fragments, change selection node and print 1`] = `
+exports[`Info with schema one query 1`] = `
 Array [
   Object {
     "args": Array [],
@@ -715,653 +715,4 @@ Array [
     "type": "Viewer",
   },
 ]
-`;
-
-exports[`info get query connection fields with fragments, change selection node and print 2`] = `
-Array [
-  Object {
-    "args": Array [],
-    "fields": Array [],
-    "isConnection": false,
-    "isNode": false,
-    "name": "field1",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 451,
-        "start": 445,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 451,
-          "start": 445,
-        },
-        "value": "field1",
-      },
-      "selectionSet": null,
-    },
-    "type": "String",
-    "typeName": "Model1",
-  },
-  Object {
-    "args": Array [],
-    "fields": Array [
-      Object {
-        "args": Array [],
-        "fields": Array [],
-        "isConnection": false,
-        "isNode": false,
-        "name": "field2",
-        "node": Object {
-          "alias": null,
-          "arguments": Array [],
-          "directives": Array [],
-          "kind": "Field",
-          "loc": Object {
-            "end": 502,
-            "start": 496,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 502,
-              "start": 496,
-            },
-            "value": "field2",
-          },
-          "selectionSet": null,
-        },
-        "type": "Int",
-      },
-    ],
-    "isConnection": false,
-    "isNode": true,
-    "name": "model2",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 520,
-        "start": 468,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 474,
-          "start": 468,
-        },
-        "value": "model2",
-      },
-      "selectionSet": Object {
-        "kind": "SelectionSet",
-        "loc": Object {
-          "end": 520,
-          "start": 474,
-        },
-        "selections": Array [
-          Object {
-            "alias": null,
-            "arguments": Array [],
-            "directives": Array [],
-            "kind": "Field",
-            "loc": Object {
-              "end": 502,
-              "start": 496,
-            },
-            "name": Object {
-              "kind": "Name",
-              "loc": Object {
-                "end": 502,
-                "start": 496,
-              },
-              "value": "field2",
-            },
-            "selectionSet": null,
-          },
-        ],
-      },
-    },
-    "type": "Model2",
-    "typeName": "Model1",
-  },
-]
-`;
-
-exports[`info get query connection fields with fragments, change selection node and print 3`] = `
-"query Q1 {
-  viewer {
-    model1(first: 10) {
-      pageInfo {
-        hasNextPage
-      }
-      ...F1
-    }
-  }
-}
-fragment F1 on Model1Connection {
-  edges {
-    node {
-      ...F2
-      id
-    }
-  }
-}
-fragment F2 on Model1 {
-  field1
-  model2 {
-    field2
-  }
-}"
-`;
-
-exports[`info get query one fields 1`] = `
-Array [
-  Object {
-    "args": Array [],
-    "fields": Array [],
-    "isConnection": false,
-    "isNode": false,
-    "name": "field1",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 32,
-        "start": 26,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 32,
-          "start": 26,
-        },
-        "value": "field1",
-      },
-      "selectionSet": null,
-    },
-  },
-  Object {
-    "args": Array [],
-    "fields": Array [
-      Object {
-        "args": Array [],
-        "fields": Array [],
-        "isConnection": false,
-        "isNode": false,
-        "name": "field2",
-        "node": Object {
-          "alias": null,
-          "arguments": Array [],
-          "directives": Array [],
-          "kind": "Field",
-          "loc": Object {
-            "end": 48,
-            "start": 42,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 48,
-              "start": 42,
-            },
-            "value": "field2",
-          },
-          "selectionSet": null,
-        },
-      },
-    ],
-    "isConnection": false,
-    "isNode": false,
-    "name": "model2",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 50,
-        "start": 34,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 40,
-          "start": 34,
-        },
-        "value": "model2",
-      },
-      "selectionSet": Object {
-        "kind": "SelectionSet",
-        "loc": Object {
-          "end": 50,
-          "start": 40,
-        },
-        "selections": Array [
-          Object {
-            "alias": null,
-            "arguments": Array [],
-            "directives": Array [],
-            "kind": "Field",
-            "loc": Object {
-              "end": 48,
-              "start": 42,
-            },
-            "name": Object {
-              "kind": "Name",
-              "loc": Object {
-                "end": 48,
-                "start": 42,
-              },
-              "value": "field2",
-            },
-            "selectionSet": null,
-          },
-        ],
-      },
-    },
-  },
-]
-`;
-
-exports[`info parse all fields 1`] = `
-Array [
-  Object {
-    "args": Array [],
-    "fields": Array [
-      Object {
-        "args": Array [],
-        "fields": Array [
-          Object {
-            "args": Array [],
-            "fields": Array [],
-            "isConnection": false,
-            "isNode": false,
-            "name": "field1",
-            "node": Object {
-              "alias": null,
-              "arguments": Array [],
-              "directives": Array [],
-              "kind": "Field",
-              "loc": Object {
-                "end": 52,
-                "start": 46,
-              },
-              "name": Object {
-                "kind": "Name",
-                "loc": Object {
-                  "end": 52,
-                  "start": 46,
-                },
-                "value": "field1",
-              },
-              "selectionSet": null,
-            },
-          },
-        ],
-        "isConnection": false,
-        "isNode": false,
-        "name": "model1",
-        "node": Object {
-          "alias": null,
-          "arguments": Array [],
-          "directives": Array [],
-          "kind": "Field",
-          "loc": Object {
-            "end": 54,
-            "start": 38,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 44,
-              "start": 38,
-            },
-            "value": "model1",
-          },
-          "selectionSet": Object {
-            "kind": "SelectionSet",
-            "loc": Object {
-              "end": 54,
-              "start": 44,
-            },
-            "selections": Array [
-              Object {
-                "alias": null,
-                "arguments": Array [],
-                "directives": Array [],
-                "kind": "Field",
-                "loc": Object {
-                  "end": 52,
-                  "start": 46,
-                },
-                "name": Object {
-                  "kind": "Name",
-                  "loc": Object {
-                    "end": 52,
-                    "start": 46,
-                  },
-                  "value": "field1",
-                },
-                "selectionSet": null,
-              },
-            ],
-          },
-        },
-      },
-      Object {
-        "args": Array [],
-        "fields": Array [
-          Object {
-            "args": Array [],
-            "fields": Array [],
-            "isConnection": false,
-            "isNode": false,
-            "name": "field2",
-            "node": Object {
-              "alias": null,
-              "arguments": Array [],
-              "directives": Array [],
-              "kind": "Field",
-              "loc": Object {
-                "end": 132,
-                "start": 126,
-              },
-              "name": Object {
-                "kind": "Name",
-                "loc": Object {
-                  "end": 132,
-                  "start": 126,
-                },
-                "value": "field2",
-              },
-              "selectionSet": null,
-            },
-          },
-        ],
-        "isConnection": false,
-        "isNode": false,
-        "name": "model2",
-        "node": Object {
-          "alias": null,
-          "arguments": Array [],
-          "directives": Array [],
-          "kind": "Field",
-          "loc": Object {
-            "end": 165,
-            "start": 67,
-          },
-          "name": Object {
-            "kind": "Name",
-            "loc": Object {
-              "end": 73,
-              "start": 67,
-            },
-            "value": "model2",
-          },
-          "selectionSet": Object {
-            "kind": "SelectionSet",
-            "loc": Object {
-              "end": 165,
-              "start": 73,
-            },
-            "selections": Array [
-              Object {
-                "directives": Array [],
-                "kind": "InlineFragment",
-                "loc": Object {
-                  "end": 150,
-                  "start": 91,
-                },
-                "selectionSet": Object {
-                  "kind": "SelectionSet",
-                  "loc": Object {
-                    "end": 150,
-                    "start": 104,
-                  },
-                  "selections": Array [
-                    Object {
-                      "alias": null,
-                      "arguments": Array [],
-                      "directives": Array [],
-                      "kind": "Field",
-                      "loc": Object {
-                        "end": 132,
-                        "start": 126,
-                      },
-                      "name": Object {
-                        "kind": "Name",
-                        "loc": Object {
-                          "end": 132,
-                          "start": 126,
-                        },
-                        "value": "field2",
-                      },
-                      "selectionSet": null,
-                    },
-                  ],
-                },
-                "typeCondition": Object {
-                  "kind": "NamedType",
-                  "loc": Object {
-                    "end": 104,
-                    "start": 98,
-                  },
-                  "name": Object {
-                    "kind": "Name",
-                    "loc": Object {
-                      "end": 104,
-                      "start": 98,
-                    },
-                    "value": "Model2",
-                  },
-                },
-              },
-            ],
-          },
-        },
-      },
-    ],
-    "isConnection": false,
-    "isNode": false,
-    "name": "node",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 175,
-        "start": 19,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 23,
-          "start": 19,
-        },
-        "value": "node",
-      },
-      "selectionSet": Object {
-        "kind": "SelectionSet",
-        "loc": Object {
-          "end": 175,
-          "start": 23,
-        },
-        "selections": Array [
-          Object {
-            "alias": null,
-            "arguments": Array [],
-            "directives": Array [],
-            "kind": "Field",
-            "loc": Object {
-              "end": 54,
-              "start": 38,
-            },
-            "name": Object {
-              "kind": "Name",
-              "loc": Object {
-                "end": 44,
-                "start": 38,
-              },
-              "value": "model1",
-            },
-            "selectionSet": Object {
-              "kind": "SelectionSet",
-              "loc": Object {
-                "end": 54,
-                "start": 44,
-              },
-              "selections": Array [
-                Object {
-                  "alias": null,
-                  "arguments": Array [],
-                  "directives": Array [],
-                  "kind": "Field",
-                  "loc": Object {
-                    "end": 52,
-                    "start": 46,
-                  },
-                  "name": Object {
-                    "kind": "Name",
-                    "loc": Object {
-                      "end": 52,
-                      "start": 46,
-                    },
-                    "value": "field1",
-                  },
-                  "selectionSet": null,
-                },
-              ],
-            },
-          },
-          Object {
-            "alias": null,
-            "arguments": Array [],
-            "directives": Array [],
-            "kind": "Field",
-            "loc": Object {
-              "end": 165,
-              "start": 67,
-            },
-            "name": Object {
-              "kind": "Name",
-              "loc": Object {
-                "end": 73,
-                "start": 67,
-              },
-              "value": "model2",
-            },
-            "selectionSet": Object {
-              "kind": "SelectionSet",
-              "loc": Object {
-                "end": 165,
-                "start": 73,
-              },
-              "selections": Array [
-                Object {
-                  "directives": Array [],
-                  "kind": "InlineFragment",
-                  "loc": Object {
-                    "end": 150,
-                    "start": 91,
-                  },
-                  "selectionSet": Object {
-                    "kind": "SelectionSet",
-                    "loc": Object {
-                      "end": 150,
-                      "start": 104,
-                    },
-                    "selections": Array [
-                      Object {
-                        "alias": null,
-                        "arguments": Array [],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "loc": Object {
-                          "end": 132,
-                          "start": 126,
-                        },
-                        "name": Object {
-                          "kind": "Name",
-                          "loc": Object {
-                            "end": 132,
-                            "start": 126,
-                          },
-                          "value": "field2",
-                        },
-                        "selectionSet": null,
-                      },
-                    ],
-                  },
-                  "typeCondition": Object {
-                    "kind": "NamedType",
-                    "loc": Object {
-                      "end": 104,
-                      "start": 98,
-                    },
-                    "name": Object {
-                      "kind": "Name",
-                      "loc": Object {
-                        "end": 104,
-                        "start": 98,
-                      },
-                      "value": "Model2",
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
-]
-`;
-
-exports[`info simple query and print 1`] = `
-Array [
-  Object {
-    "args": Array [],
-    "fields": Array [],
-    "isConnection": false,
-    "isNode": false,
-    "name": "test",
-    "node": Object {
-      "alias": null,
-      "arguments": Array [],
-      "directives": Array [],
-      "kind": "Field",
-      "loc": Object {
-        "end": 26,
-        "start": 22,
-      },
-      "name": Object {
-        "kind": "Name",
-        "loc": Object {
-          "end": 26,
-          "start": 22,
-        },
-        "value": "test",
-      },
-      "selectionSet": null,
-    },
-    "type": "String",
-  },
-]
-`;
-
-exports[`info simple query and print 2`] = `
-"query Q1 {
-  test
-}
-"
 `;

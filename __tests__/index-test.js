@@ -1,11 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const g = require("graphql");
-const graphql_relay_1 = require("graphql-relay");
 const __1 = require("./..");
-const nodeInterface = graphql_relay_1.nodeDefinitions(() => { }, () => {
-    return null;
-});
+const schema_1 = require("./../__fixtures__/schema");
 describe("info", () => {
     it("simple query and print", () => {
         const schema = new g.GraphQLSchema({
@@ -36,7 +32,7 @@ describe("info", () => {
         expect(parser.getFields()).toMatchSnapshot();
     });
     it("get node fields", () => {
-        const parser = __1.fromQuery(`query Q1{ node{ model1{ field1 } } }`);
+        const parser = __1.fromQuery(`query Q1{ node(id:"1"){ model1{ field1 } } }`);
         expect(parser.getNodeFields()).toMatchSnapshot();
     });
     it("get query one fields", () => {
@@ -59,66 +55,6 @@ describe("info", () => {
         expect(parser.getQueryConnectionFields()).toMatchSnapshot();
     });
     it("get query connection fields with fragments, change selection node and print", () => {
-        const schema = new g.GraphQLSchema({
-            query: new g.GraphQLObjectType({
-                name: "Query",
-                fields: {
-                    viewer: {
-                        type: new g.GraphQLObjectType({
-                            name: "Viewer",
-                            fields: {
-                                id: { type: new g.GraphQLNonNull(g.GraphQLID) },
-                                model1: {
-                                    type: new g.GraphQLObjectType({
-                                        name: "Model1Connection",
-                                        fields: {
-                                            edges: {
-                                                type: new g.GraphQLNonNull(new g.GraphQLList(new g.GraphQLObjectType({
-                                                    name: "Model1ConnectionEdge",
-                                                    fields: {
-                                                        node: {
-                                                            type: new g.GraphQLObjectType({
-                                                                name: "Model1",
-                                                                fields: {
-                                                                    id: { type: new g.GraphQLNonNull(g.GraphQLID) },
-                                                                    field1: { type: g.GraphQLString },
-                                                                    model2: {
-                                                                        type: new g.GraphQLObjectType({
-                                                                            name: "Model2",
-                                                                            fields: {
-                                                                                field2: { type: g.GraphQLInt },
-                                                                                id: {
-                                                                                    type: new g.GraphQLNonNull(g.GraphQLID),
-                                                                                },
-                                                                            },
-                                                                            interfaces: [nodeInterface.nodeInterface],
-                                                                        }),
-                                                                    },
-                                                                },
-                                                                interfaces: [nodeInterface.nodeInterface],
-                                                            }),
-                                                        },
-                                                    },
-                                                }))),
-                                            },
-                                            pageInfo: {
-                                                type: new g.GraphQLObjectType({
-                                                    name: "Model1ConnectionPageInfo",
-                                                    fields: {
-                                                        hasNextPage: { type: g.GraphQLBoolean },
-                                                    },
-                                                }),
-                                            },
-                                        },
-                                    }),
-                                },
-                            },
-                            interfaces: [nodeInterface.nodeInterface],
-                        }),
-                    },
-                },
-            }),
-        });
         const parser = __1.fromQuery(`query Q1{
             viewer{
                 model1(first:10){
@@ -141,7 +77,7 @@ describe("info", () => {
                     field2
                 }
             }
-            `, schema);
+            `, schema_1.default);
         const fields = parser.getFields();
         expect(fields).toMatchSnapshot();
         expect(parser.getQueryConnectionFields()).toMatchSnapshot();

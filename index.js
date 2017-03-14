@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const g = require("graphql");
 ;
 class GraphQLFieldsInfo {
@@ -85,14 +84,19 @@ class GraphQLFieldsInfo {
         };
     }
     parseFragmentSpreadNode(node) {
+        const typeName = this.fragments[node.name.value].typeCondition.name.value;
         return {
             args: [],
             name: node.name.value,
             isFragment: true,
             isConnection: false,
-            fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
+            fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet).map((f) => {
+                f.typeName = typeName;
+                return f;
+            }),
             isNode: false,
             node,
+            typeName,
         };
     }
     parseInlineFragmentNode(node) {
@@ -122,13 +126,24 @@ class GraphQLFieldsInfo {
         let info;
         if (g.isCompositeType(type)) {
             if (g.isAbstractType(type)) {
-                throw new Error("GraphQLFieldInfo::Not implemented union type");
+                if (type instanceof g.GraphQLInterfaceType) {
+                    info = {
+                        fields: type.getFields(),
+                        interfaces: [],
+                        isConnection: false,
+                        isInterface: true,
+                    };
+                }
+                else {
+                    throw new Error("GraphQLFieldInfo::Not implemented union type");
+                }
             }
             else {
                 info = {
                     fields: type.getFields(),
                     interfaces: type.getInterfaces(),
                     isConnection: type.name.endsWith("Connection"),
+                    isInterface: false,
                 };
             }
         }
@@ -150,6 +165,9 @@ class GraphQLFieldsInfo {
         return this.schema.getType("Node");
     }
     applySchemaToField(field, graphqlField) {
+        if (!this.schema) {
+            return;
+        }
         field.type = graphqlField.type;
         field.args = graphqlField.args;
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
@@ -162,9 +180,25 @@ class GraphQLFieldsInfo {
         }
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
-                throw new Error("GraphQLFieldInfo::Invalid type for field " + field.name);
+                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`");
             }
-            this.applySchemaToFields(field.fields, graphqlInfo.fields);
+            if (graphqlInfo.isInterface) {
+                // search fragment for resolve type for interface (e.g. Node-interface)
+                const fragmentWithType = field.fields.filter((f) => {
+                    return !!f.typeName;
+                })[0];
+                if (!fragmentWithType || !fragmentWithType.typeName) {
+                    throw new Error("Not found real type for interface " + field.name);
+                }
+                const graphqlSubTypeInfo = this.getInfoFromOutputType(this.schema.getType(fragmentWithType.typeName));
+                if (!graphqlSubTypeInfo) {
+                    throw new Error("Unknown type for interface: " + field.typeName);
+                }
+                this.applySchemaToFields(field.fields, graphqlSubTypeInfo.fields);
+            }
+            else {
+                this.applySchemaToFields(field.fields, graphqlInfo.fields);
+            }
         }
     }
     applySchemaToFields(fields, graphqlFields) {
@@ -212,4 +246,5 @@ function fromResolveInfo(info, schema) {
     return new GraphQLFieldsInfo(info.operation, info.fragments, schema);
 }
 exports.fromResolveInfo = fromResolveInfo;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = fromQuery;

@@ -9,6 +9,7 @@ export interface Field {
     isNode: boolean;
     node: g.SelectionNode;
     isConnection: boolean;
+    typeName?: string;
 };
 export type Fields = Field[];
 export class GraphQLFieldsInfo {
@@ -94,14 +95,19 @@ export class GraphQLFieldsInfo {
         };
     }
     protected parseFragmentSpreadNode(node: g.FragmentSpreadNode): Field {
+        const typeName = this.fragments[node.name.value].typeCondition.name.value;
         return {
             args: [],
             name: node.name.value,
             isFragment: true,
             isConnection: false,
-            fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet),
+            fields: this.parseSelectionSetNode(this.fragments[node.name.value].selectionSet).map((f) => {
+                f.typeName = typeName;
+                return f;
+            }),
             isNode: false,
             node,
+            typeName,
         };
     }
     protected parseInlineFragmentNode(node: g.InlineFragmentNode): Field {
@@ -131,21 +137,33 @@ export class GraphQLFieldsInfo {
         fields: g.GraphQLFieldMap<any, any>;
         interfaces: g.GraphQLInterfaceType[];
         isConnection: boolean;
+        isInterface: boolean;
     } | undefined {
         let info: {
             fields: g.GraphQLFieldMap<any, any>;
             interfaces: g.GraphQLInterfaceType[];
             isConnection: boolean;
+            isInterface: boolean;
         } | undefined;
 
         if (g.isCompositeType(type)) {
             if (g.isAbstractType(type)) {
-                throw new Error("GraphQLFieldInfo::Not implemented union type");
+                if (type instanceof g.GraphQLInterfaceType) {
+                    info = {
+                        fields: (type as g.GraphQLInterfaceType).getFields(),
+                        interfaces: [],
+                        isConnection: false,
+                        isInterface: true,
+                    };
+                } else {
+                    throw new Error("GraphQLFieldInfo::Not implemented union type");
+                }
             } else {
                 info = {
                     fields: type.getFields(),
                     interfaces: type.getInterfaces(),
                     isConnection: type.name.endsWith("Connection"),
+                    isInterface: false,
                 };
             }
         } else {
@@ -166,6 +184,9 @@ export class GraphQLFieldsInfo {
         return this.schema.getType("Node");
     }
     protected applySchemaToField(field: Field, graphqlField: g.GraphQLField<any, any>) {
+        if (!this.schema) {
+            return;
+        }
         field.type = graphqlField.type;
         field.args = graphqlField.args;
         const graphqlInfo = this.getInfoFromOutputType(graphqlField.type);
@@ -176,11 +197,28 @@ export class GraphQLFieldsInfo {
             }
             field.isConnection = graphqlInfo.isConnection;
         }
+
         if (field.fields.length > 0) {
             if (typeof (graphqlInfo) === "undefined") {
-                throw new Error("GraphQLFieldInfo::Invalid type for field " + field.name);
+                throw new Error("GraphQLFieldInfo::Invalid type for field `" + field.name + "`");
             }
-            this.applySchemaToFields(field.fields, graphqlInfo.fields);
+            if (graphqlInfo.isInterface) {
+                // search fragment for resolve type for interface (e.g. Node-interface)
+                const fragmentWithType = field.fields.filter((f) => {
+                    return !!f.typeName;
+                })[0];
+                if (!fragmentWithType || !fragmentWithType.typeName) {
+                    throw new Error("Not found real type for interface " + field.name);
+                }
+                const graphqlSubTypeInfo = this.getInfoFromOutputType(
+                    this.schema.getType(fragmentWithType.typeName) as g.GraphQLOutputType);
+                if (!graphqlSubTypeInfo) {
+                    throw new Error("Unknown type for interface: " + field.typeName);
+                }
+                this.applySchemaToFields(field.fields, graphqlSubTypeInfo.fields);
+            } else {
+                this.applySchemaToFields(field.fields, graphqlInfo.fields);
+            }
         }
     }
     protected applySchemaToFields(fields: Fields, graphqlFields: g.GraphQLFieldMap<any, any>) {
