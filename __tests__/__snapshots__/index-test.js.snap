@@ -991,14 +991,14 @@ Array [
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 52,
-                "start": 46,
+                "end": 50,
+                "start": 44,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 52,
-                  "start": 46,
+                  "end": 50,
+                  "start": 44,
                 },
                 "value": "field1",
               },
@@ -1015,22 +1015,22 @@ Array [
           "directives": Array [],
           "kind": "Field",
           "loc": Object {
-            "end": 54,
-            "start": 38,
+            "end": 52,
+            "start": 36,
           },
           "name": Object {
             "kind": "Name",
             "loc": Object {
-              "end": 44,
-              "start": 38,
+              "end": 42,
+              "start": 36,
             },
             "value": "model1",
           },
           "selectionSet": Object {
             "kind": "SelectionSet",
             "loc": Object {
-              "end": 54,
-              "start": 44,
+              "end": 52,
+              "start": 42,
             },
             "selections": Array [
               Object {
@@ -1039,14 +1039,14 @@ Array [
                 "directives": Array [],
                 "kind": "Field",
                 "loc": Object {
-                  "end": 52,
-                  "start": 46,
+                  "end": 50,
+                  "start": 44,
                 },
                 "name": Object {
                   "kind": "Name",
                   "loc": Object {
-                    "end": 52,
-                    "start": 46,
+                    "end": 50,
+                    "start": 44,
                   },
                   "value": "field1",
                 },
@@ -1071,14 +1071,14 @@ Array [
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 132,
-                "start": 126,
+                "end": 130,
+                "start": 124,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 132,
-                  "start": 126,
+                  "end": 130,
+                  "start": 124,
                 },
                 "value": "field2",
               },
@@ -1095,36 +1095,36 @@ Array [
           "directives": Array [],
           "kind": "Field",
           "loc": Object {
-            "end": 165,
-            "start": 67,
+            "end": 162,
+            "start": 65,
           },
           "name": Object {
             "kind": "Name",
             "loc": Object {
-              "end": 73,
-              "start": 67,
+              "end": 71,
+              "start": 65,
             },
             "value": "model2",
           },
           "selectionSet": Object {
             "kind": "SelectionSet",
             "loc": Object {
-              "end": 165,
-              "start": 73,
+              "end": 162,
+              "start": 71,
             },
             "selections": Array [
               Object {
                 "directives": Array [],
                 "kind": "InlineFragment",
                 "loc": Object {
-                  "end": 150,
-                  "start": 91,
+                  "end": 148,
+                  "start": 89,
                 },
                 "selectionSet": Object {
                   "kind": "SelectionSet",
                   "loc": Object {
-                    "end": 150,
-                    "start": 104,
+                    "end": 148,
+                    "start": 102,
                   },
                   "selections": Array [
                     Object {
@@ -1133,14 +1133,14 @@ Array [
                       "directives": Array [],
                       "kind": "Field",
                       "loc": Object {
-                        "end": 132,
-                        "start": 126,
+                        "end": 130,
+                        "start": 124,
                       },
                       "name": Object {
                         "kind": "Name",
                         "loc": Object {
-                          "end": 132,
-                          "start": 126,
+                          "end": 130,
+                          "start": 124,
                         },
                         "value": "field2",
                       },
@@ -1151,14 +1151,14 @@ Array [
                 "typeCondition": Object {
                   "kind": "NamedType",
                   "loc": Object {
-                    "end": 104,
-                    "start": 98,
+                    "end": 102,
+                    "start": 96,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 104,
-                      "start": 98,
+                      "end": 102,
+                      "start": 96,
                     },
                     "value": "Model2",
                   },
@@ -1178,22 +1178,22 @@ Array [
       "directives": Array [],
       "kind": "Field",
       "loc": Object {
-        "end": 175,
-        "start": 19,
+        "end": 172,
+        "start": 18,
       },
       "name": Object {
         "kind": "Name",
         "loc": Object {
-          "end": 23,
-          "start": 19,
+          "end": 22,
+          "start": 18,
         },
         "value": "node",
       },
       "selectionSet": Object {
         "kind": "SelectionSet",
         "loc": Object {
-          "end": 175,
-          "start": 23,
+          "end": 172,
+          "start": 22,
         },
         "selections": Array [
           Object {
@@ -1202,22 +1202,22 @@ Array [
             "directives": Array [],
             "kind": "Field",
             "loc": Object {
-              "end": 54,
-              "start": 38,
+              "end": 52,
+              "start": 36,
             },
             "name": Object {
               "kind": "Name",
               "loc": Object {
-                "end": 44,
-                "start": 38,
+                "end": 42,
+                "start": 36,
               },
               "value": "model1",
             },
             "selectionSet": Object {
               "kind": "SelectionSet",
               "loc": Object {
-                "end": 54,
-                "start": 44,
+                "end": 52,
+                "start": 42,
               },
               "selections": Array [
                 Object {
@@ -1226,14 +1226,14 @@ Array [
                   "directives": Array [],
                   "kind": "Field",
                   "loc": Object {
-                    "end": 52,
-                    "start": 46,
+                    "end": 50,
+                    "start": 44,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 52,
-                      "start": 46,
+                      "end": 50,
+                      "start": 44,
                     },
                     "value": "field1",
                   },
@@ -1248,36 +1248,36 @@ Array [
             "directives": Array [],
             "kind": "Field",
             "loc": Object {
-              "end": 165,
-              "start": 67,
+              "end": 162,
+              "start": 65,
             },
             "name": Object {
               "kind": "Name",
               "loc": Object {
-                "end": 73,
-                "start": 67,
+                "end": 71,
+                "start": 65,
               },
               "value": "model2",
             },
             "selectionSet": Object {
               "kind": "SelectionSet",
               "loc": Object {
-                "end": 165,
-                "start": 73,
+                "end": 162,
+                "start": 71,
               },
               "selections": Array [
                 Object {
                   "directives": Array [],
                   "kind": "InlineFragment",
                   "loc": Object {
-                    "end": 150,
-                    "start": 91,
+                    "end": 148,
+                    "start": 89,
                   },
                   "selectionSet": Object {
                     "kind": "SelectionSet",
                     "loc": Object {
-                      "end": 150,
-                      "start": 104,
+                      "end": 148,
+                      "start": 102,
                     },
                     "selections": Array [
                       Object {
@@ -1286,14 +1286,14 @@ Array [
                         "directives": Array [],
                         "kind": "Field",
                         "loc": Object {
-                          "end": 132,
-                          "start": 126,
+                          "end": 130,
+                          "start": 124,
                         },
                         "name": Object {
                           "kind": "Name",
                           "loc": Object {
-                            "end": 132,
-                            "start": 126,
+                            "end": 130,
+                            "start": 124,
                           },
                           "value": "field2",
                         },
@@ -1304,14 +1304,14 @@ Array [
                   "typeCondition": Object {
                     "kind": "NamedType",
                     "loc": Object {
-                      "end": 104,
-                      "start": 98,
+                      "end": 102,
+                      "start": 96,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 104,
-                        "start": 98,
+                        "end": 102,
+                        "start": 96,
                       },
                       "value": "Model2",
                     },

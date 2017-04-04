@@ -20,15 +20,15 @@ describe("info", () => {
         expect(parser.print()).toMatchSnapshot();
     });
     it("parse all fields", () => {
-        const parser = __1.fromQuery(`query Q1{ 
-        node{ 
+        const parser = __1.fromQuery(`query Q1{
+        node{
             model1{ field1 }
             model2{
                 ... on Model2{
                     field2
-                } 
+                }
             }
-        } 
+        }
     }`);
         expect(parser.getFields()).toMatchSnapshot();
     });
@@ -49,7 +49,7 @@ describe("info", () => {
                             name
                         }
                     }
-                    
+
                 }
             }
         }`);

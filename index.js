@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const g = require("graphql");
-;
 class GraphQLFieldsInfo {
     constructor(operation, fragments, schema) {
         this.operation = operation;
@@ -236,7 +235,6 @@ class GraphQLFieldsInfo {
     }
 }
 exports.GraphQLFieldsInfo = GraphQLFieldsInfo;
-;
 function fromQuery(q, schema) {
     const document = g.parse(q);
     const fragments = {};

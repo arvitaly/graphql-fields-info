@@ -11,7 +11,7 @@ export interface Field {
     node: g.SelectionNode;
     isConnection: boolean;
     typeName?: string;
-};
+}
 export type Fields = Field[];
 export class GraphQLFieldsInfo {
     protected fields: Fields;
@@ -253,7 +253,7 @@ export class GraphQLFieldsInfo {
             default:
         }
     }
-};
+}
 export function fromQuery(q: string, schema?: g.GraphQLSchema) {
     const document = g.parse(q);
     const fragments: { [fragmentName: string]: g.FragmentDefinitionNode } = {};
