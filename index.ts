@@ -40,12 +40,17 @@ export class GraphQLFieldsInfo {
     public getNodeInterfaceFields() {
         return this.getFields()[0].fields;
     }
-    public getQueryConnectionFields() {
+    public getQueryConnectionFields(setName?: string) {
         const viewerNode = this.getFields().find((f) => f.name === "viewer");
         if (!viewerNode) {
             throw new Error("GraphQLFieldInfo::Not found ViewerNode");
         }
-        const connField = viewerNode.fields.find((f) => f.name !== "id");
+        let connField: Field | undefined;
+        if (setName) {
+            connField = viewerNode.fields.find((f) => f.name === setName);
+        } else {
+            connField = viewerNode.fields.find((f) => f.name !== "id");
+        }
         if (!connField) {
             throw new Error("GraphQLFieldInfo::Not found field for connection");
         }
