@@ -91,4 +91,16 @@ describe("info", () => {
         }
         expect(parser.print()).toMatchSnapshot();
     });
+    it("mutation payload fields", () => {
+        const parser = fromQuery(`mutation M1{
+            createModel(input:{ value: "Hello" }){
+                clientMutationId
+                model {
+                    name
+                    id
+                }
+            }
+        }`);
+        expect(parser.getFields()).toMatchSnapshot();
+    });
 });

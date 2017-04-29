@@ -57,7 +57,11 @@ export class GraphQLFieldsInfo {
         return this.getFieldsForConnection(connField);
     }
     public getMutationPayloadFields() {
-        return this.getFields()[0].fields[0].fields;
+        const modelSet = this.getFields()[0].fields.find((f) => f.name !== "clientMutationId");
+        if (!modelSet) {
+            throw new Error("Not found mutation payload model");
+        }
+        return modelSet.fields;
     }
     public getFieldsForConnection(field: Field) {
         const edgesNode = field.fields.find((f) => f.name === "edges");

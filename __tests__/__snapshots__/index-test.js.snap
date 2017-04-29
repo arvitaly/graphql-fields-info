@@ -971,6 +971,329 @@ Array [
 ]
 `;
 
+exports[`info mutation payload fields 1`] = `
+Array [
+  Object {
+    "args": Array [],
+    "fields": Array [
+      Object {
+        "args": Array [],
+        "fields": Array [],
+        "isConnection": false,
+        "isNode": false,
+        "name": "clientMutationId",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 96,
+            "start": 80,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 96,
+              "start": 80,
+            },
+            "value": "clientMutationId",
+          },
+          "selectionSet": null,
+        },
+      },
+      Object {
+        "args": Array [],
+        "fields": Array [
+          Object {
+            "args": Array [],
+            "fields": Array [],
+            "isConnection": false,
+            "isNode": false,
+            "name": "name",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 145,
+                "start": 141,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 145,
+                  "start": 141,
+                },
+                "value": "name",
+              },
+              "selectionSet": null,
+            },
+          },
+          Object {
+            "args": Array [],
+            "fields": Array [],
+            "isConnection": false,
+            "isNode": false,
+            "name": "id",
+            "node": Object {
+              "alias": null,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 168,
+                "start": 166,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 168,
+                  "start": 166,
+                },
+                "value": "id",
+              },
+              "selectionSet": null,
+            },
+          },
+        ],
+        "isConnection": false,
+        "isNode": false,
+        "name": "model",
+        "node": Object {
+          "alias": null,
+          "arguments": Array [],
+          "directives": Array [],
+          "kind": "Field",
+          "loc": Object {
+            "end": 186,
+            "start": 113,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 118,
+              "start": 113,
+            },
+            "value": "model",
+          },
+          "selectionSet": Object {
+            "kind": "SelectionSet",
+            "loc": Object {
+              "end": 186,
+              "start": 119,
+            },
+            "selections": Array [
+              Object {
+                "alias": null,
+                "arguments": Array [],
+                "directives": Array [],
+                "kind": "Field",
+                "loc": Object {
+                  "end": 145,
+                  "start": 141,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 145,
+                    "start": 141,
+                  },
+                  "value": "name",
+                },
+                "selectionSet": null,
+              },
+              Object {
+                "alias": null,
+                "arguments": Array [],
+                "directives": Array [],
+                "kind": "Field",
+                "loc": Object {
+                  "end": 168,
+                  "start": 166,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 168,
+                    "start": 166,
+                  },
+                  "value": "id",
+                },
+                "selectionSet": null,
+              },
+            ],
+          },
+        },
+      },
+    ],
+    "isConnection": false,
+    "isNode": false,
+    "name": "createModel",
+    "node": Object {
+      "alias": null,
+      "arguments": Array [
+        Object {
+          "kind": "Argument",
+          "loc": Object {
+            "end": 61,
+            "start": 37,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 42,
+              "start": 37,
+            },
+            "value": "input",
+          },
+          "value": Object {
+            "fields": Array [
+              Object {
+                "kind": "ObjectField",
+                "loc": Object {
+                  "end": 59,
+                  "start": 45,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 50,
+                    "start": 45,
+                  },
+                  "value": "value",
+                },
+                "value": Object {
+                  "kind": "StringValue",
+                  "loc": Object {
+                    "end": 59,
+                    "start": 52,
+                  },
+                  "value": "Hello",
+                },
+              },
+            ],
+            "kind": "ObjectValue",
+            "loc": Object {
+              "end": 61,
+              "start": 43,
+            },
+          },
+        },
+      ],
+      "directives": Array [],
+      "kind": "Field",
+      "loc": Object {
+        "end": 200,
+        "start": 25,
+      },
+      "name": Object {
+        "kind": "Name",
+        "loc": Object {
+          "end": 36,
+          "start": 25,
+        },
+        "value": "createModel",
+      },
+      "selectionSet": Object {
+        "kind": "SelectionSet",
+        "loc": Object {
+          "end": 200,
+          "start": 62,
+        },
+        "selections": Array [
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 96,
+              "start": 80,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 96,
+                "start": 80,
+              },
+              "value": "clientMutationId",
+            },
+            "selectionSet": null,
+          },
+          Object {
+            "alias": null,
+            "arguments": Array [],
+            "directives": Array [],
+            "kind": "Field",
+            "loc": Object {
+              "end": 186,
+              "start": 113,
+            },
+            "name": Object {
+              "kind": "Name",
+              "loc": Object {
+                "end": 118,
+                "start": 113,
+              },
+              "value": "model",
+            },
+            "selectionSet": Object {
+              "kind": "SelectionSet",
+              "loc": Object {
+                "end": 186,
+                "start": 119,
+              },
+              "selections": Array [
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 145,
+                    "start": 141,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 145,
+                      "start": 141,
+                    },
+                    "value": "name",
+                  },
+                  "selectionSet": null,
+                },
+                Object {
+                  "alias": null,
+                  "arguments": Array [],
+                  "directives": Array [],
+                  "kind": "Field",
+                  "loc": Object {
+                    "end": 168,
+                    "start": 166,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 168,
+                      "start": 166,
+                    },
+                    "value": "id",
+                  },
+                  "selectionSet": null,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+]
+`;
+
 exports[`info parse all fields 1`] = `
 Array [
   Object {
